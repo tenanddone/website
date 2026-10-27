@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ten &amp; Done – To-do-Liste und Tagesplaner mit 10 Aufgaben am Tag</title>
+<meta name="description" content="Die To-do-Liste mit genau 10 Aufgaben am Tag: planen, fest zusagen, abhaken. Mit Gewohnheiten, Fokus-Timer, Kalender und Widget. Ohne Konto, ohne Werbung.">
+<link rel="canonical" href="https://tenanddone.app/">
+<link rel="alternate" hreflang="de" href="https://tenanddone.app/">
+<link rel="alternate" hreflang="en" href="https://tenanddone.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://tenanddone.app/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ten &amp; Done">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://tenanddone.app/">
+<meta property="og:title" content="Ten &amp; Done – Jeden Tag 10 Dinge. Mehr nicht.">
+<meta property="og:description" content="Die To-do-Liste mit genau zehn Plätzen am Tag. Planen, fest zusagen, abhaken – dann ist Feierabend.">
+<meta property="og:image" content="https://tenanddone.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Korkbrett mit bunten Zetteln, Tack und dem Satz „Jeden Tag 10 Dinge. Mehr nicht.“">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#6e55f0">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/logo.png">
+<link rel="preload" href="fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Ten & Done",
+  "alternateName": "Ten and Done",
+  "operatingSystem": "Android",
+  "applicationCategory": "ProductivityApplication",
+  "inLanguage": ["de", "en"],
+  "description": "To-do-Liste und Tagesplaner mit genau 10 Aufgaben am Tag: planen, fest zusagen, abhaken. Mit Gewohnheiten, Fokus-Timer, Kalender, Einkaufsliste, Notizen und Widget. Ohne Konto, ohne Werbung.",
+  "url": "https://tenanddone.app/",
+  "image": "https://tenanddone.app/img/og.jpg",
+  "screenshot": ["https://tenanddone.app/img/brett.webp", "https://tenanddone.app/img/zeitleiste.webp", "https://tenanddone.app/img/fortschritt.webp"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "featureList": "10 Aufgaben am Tag, Top-Thema, Gewohnheiten-Tracker, Fokus-Timer, Kalender und Termine, Geburtstage und Jahrestage, Zeitleiste, Einkaufsliste, Notizen und Checklisten, Widget, Tablet, Drucken als PDF, Fortschritt, sieben Stile"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Warum genau zehn Aufgaben am Tag?", "acceptedAnswer": { "@type": "Answer", "text": "Zehn Dinge passen auf einen Bildschirm und in einen Tag. Wer mehr plant, schafft meist weniger und ärgert sich abends über den Rest. Die Zettel dürfen so klein sein, wie es dir heute passt." } },
+    { "@type": "Question", "name": "Kostet Ten & Done etwas?", "acceptedAnswer": { "@type": "Answer", "text": "Der Kern ist frei: 10 Aufgaben am Tag, Gewohnheiten, Fokus Zeit, Kalender, Listen, Notizen, Widget und der Fortschritt der Woche. Premium gibt es als Jahresabo oder zum einmaligen Kauf." } },
+    { "@type": "Question", "name": "Brauche ich ein Konto?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Keine Anmeldung, keine E-Mail-Adresse. Alles liegt auf deinem Handy, die App funktioniert offline." } },
+    { "@type": "Question", "name": "Gibt es ein Widget?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Das Brett-Widget zeigt deinen Tagesplan auf dem Startbildschirm, dort kannst du auch abhaken. Ein kleines Widget nimmt neue Aufgaben per Sprache auf." } },
+    { "@type": "Question", "name": "Gibt es Ten & Done fürs iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Zuerst erscheint die App für Android-Handys und -Tablets. Eine Version fürs iPhone ist geplant." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="./"><img src="img/logo.png" alt="" width="40" height="40">Ten &amp; Done</a>
+  <nav aria-label="Seiten">
+    <a href="#so-gehts">So geht’s</a>
+    <a href="#funktionen">Funktionen</a>
+    <a href="#bilder">Bilder</a>
+    <a href="#preis">Preis</a>
+    <a href="#fragen">Fragen</a>
+    <a href="en/" hreflang="en" lang="en">English</a>
+  </nav>
+</header>
+
+<div class="board">
+  <div class="wrap hero">
+    <div class="note">
+      <h1>Jeden Tag <strong>10</strong> Dinge. Mehr&nbsp;nicht.</h1>
+      <p class="lead">Ten &amp; Done ist eine To-do-Liste und ein Tagesplaner mit genau zehn Plätzen am Tag. Du planst, sagst morgens fest zu und hakst ab.</p>
+      <p class="sub">Für alle, deren Liste nie kürzer wird – und für alle, die schwer in Gang kommen. Groß oder klein, du wählst zehn. Sind sie geschafft, ist Feierabend.</p>
+      <div class="cta">
+        <span class="soon">Bald bei Google Play · für Handy und Tablet</span>
+        <a class="btn" href="#so-gehts">So funktioniert’s</a>
+      </div>
+    </div>
+    <div class="phone">
+      <picture>
+        <source srcset="img/brett_dark.webp" media="(prefers-color-scheme: dark)">
+        <img src="img/brett.webp" width="720" height="1560" fetchpriority="high" alt="Tagesplan als Korkbrett: zehn bunte Zettel, oben das Top-Thema „Steuer machen“ um 11 Uhr, dazu Gewohnheiten, Fokus Zeit, Sport und Einkaufen; zwei Zettel tragen den Stempel „Erledigt“.">
+      </picture>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="so-gehts">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">So geht’s</span>
+        <h2>Ein Tag mit Ten &amp; Done</h2>
+        <p>Vier Schritte, jeden Tag dieselben. Nach einer Woche denkst du nicht mehr darüber nach.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Aufschreiben</h3><p>Am Abend oder am Morgen: zehn Zettel aufs Brett, große und kleine. Tippen oder einsprechen.</p></li>
+        <li><h3>Festmachen</h3><p>Wähle dein Top-Thema und halte den Knopf gedrückt. Ab jetzt steht der Plan.</p></li>
+        <li><h3>Abhaken</h3><p>Jeder erledigte Zettel bekommt seinen Stempel. Kommt Neues dazu, läuft es als Extra.</p></li>
+        <li><h3>Abschließen</h3><p>Am Abend entscheidest du: mit auf morgen, später oder kann weg.</p></li>
+      </ol>
+      <div class="points" aria-label="Punkte">
+        <span class="chip">Zettel geschafft <b class="plus">+1</b></span>
+        <span class="chip">Top-Thema geschafft <b class="plus">+3</b></span>
+        <span class="chip">Pünktlich festgemacht <b class="plus">+1</b></span>
+        <span class="chip">Heute nicht geschafft <b>±0</b></span>
+        <span class="chip">Extras <b>±0</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="fuer-wen">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Für wen</span>
+        <h2>Zwei Arten von vollen Tagen</h2>
+        <p>Dieselbe Grenze hilft beiden: zehn Dinge, fest vorgenommen. Mehr nicht.</p>
+      </div>
+      <div class="grid2">
+        <div class="feature"><span class="tag t-f" aria-hidden="true">47</span><div><h3>Deine Liste wird nie kürzer</h3><p>Du arbeitest viel ab, und abends stehen trotzdem 30 Punkte offen. Hier darf alles auf den Parkplatz, aufs Brett kommen nur zehn. Sind sie geschafft, ist Feierabend – mit gutem Gefühl.</p></div></div>
+        <div class="feature"><span class="tag t-b" aria-hidden="true">▶</span><div><h3>Du kommst schwer in Gang</h3><p>Du weißt, was zu tun ist, und schiebst es trotzdem auf. Kleine Zettel zählen wie große. Du sagst morgens fest zu, Tack schubst dich an, und Großes teilst du in kleine Schritte.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Funktionen</span>
+        <h2>Alles, was ein Tag braucht – auf zehn Zetteln</h2>
+        <p>Aufgaben, Gewohnheiten, Fokus und Termine liegen auf einem Brett. Was nicht gebraucht wird, bleibt aus dem Weg.</p>
+      </div>
+      <div class="grid2">
+        <div class="feature"><span class="tag t-a" aria-hidden="true">10</span><div><h3>Genau zehn Plätze</h3><p>Der elfte Gedanke muss warten. So planst du nur, was du an einem Tag wirklich schaffen kannst. Ein Zettel ist dein Top-Thema.</p></div></div>
+        <div class="feature"><span class="tag t-c" aria-hidden="true">✓</span><div><h3>Ein Versprechen an dich</h3><p>Du sagst fest zu, indem du den Knopf gedrückt hältst. Für jeden Zettel setzt du einen Punkt. Schaffst du ihn, kommt der Punkt zurück.</p></div></div>
+        <div class="feature"><span class="tag t-b" aria-hidden="true">↻</span><div><h3>Gewohnheiten-Tracker</h3><p>Sport, Wasser trinken, kein Handy im Bett: Gewohnheiten erscheinen an ihren Tagen von selbst. Mit Strichliste und Serie.</p></div></div>
+        <div class="feature"><span class="tag t-f" aria-hidden="true">⏱</span><div><h3>Fokus-Timer</h3><p>Handy umdrehen, die Fokus Zeit läuft. „Nicht stören“ ist an, bis du es wieder hochnimmst.</p></div></div>
+        <div class="feature"><span class="tag t-c" aria-hidden="true">📅</span><div><h3>Kalender und Termine</h3><p>Termine aus deinem Kalender kommen als Zettel aufs Brett. Eigene Termine trägst du direkt in den Google Kalender ein, auf Wunsch mit Gästen.</p></div></div>
+        <div class="feature"><span class="tag t-f" aria-hidden="true">🎂</span><div><h3>Geburtstage und Jahrestage</h3><p>Sag einfach „Lena hat am 3. Mai Geburtstag“. Die App merkt es sich und erinnert dich ein paar Tage vorher.</p></div></div>
+        <div class="feature"><span class="tag t-a" aria-hidden="true">☰</span><div><h3>Einkaufsliste, Notizen, Checklisten</h3><p>Die Einkaufsliste nach Läden, auch per Sprache, zum Teilen. Notizen und Checklisten – auf Wunsch direkt an einer Aufgabe.</p></div></div>
+        <div class="feature"><span class="tag t-b" aria-hidden="true">⏲</span><div><h3>Zeitleiste</h3><p>Wenn Uhrzeiten dazukommen: Zettel mit dem Finger auf eine Uhrzeit ziehen, freie Zeit antippen und einplanen.</p></div></div>
+        <div class="feature"><span class="tag t-c" aria-hidden="true">⛰</span><div><h3>Große Brocken in Schritten</h3><p>Ist dir etwas zu groß, teilst du es in drei bis fünf kleine Schritte. Der letzte Schritt ist der Gipfel.</p></div></div>
+        <div class="feature"><span class="tag t-a" aria-hidden="true">P</span><div><h3>Ein Parkplatz für alles andere</h3><p>Alles darf auf die Liste – aufs Brett kommen nur zehn. Der Rest wartet auf dem Parkplatz. Sonntags erinnert Tack dich an das, was dort schon lange steht.</p></div></div>
+        <div class="feature"><span class="tag t-f" aria-hidden="true">▦</span><div><h3>Widget für den Startbildschirm</h3><p>Dein Tagesplan im Stil deines Bretts. Abhaken, ohne die App zu öffnen. Ein kleines Widget nimmt neue Aufgaben per Sprache auf.</p></div></div>
+        <div class="feature"><span class="tag t-b" aria-hidden="true">⎙</span><div><h3>Drucken</h3><p>Tag oder Woche als PDF – als Plan für den Kühlschrank oder den Schreibtisch.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bilder">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Aus der App</span>
+        <h2>Brett, Zeitleiste, Fortschritt</h2>
+        <p>Mehrere Ansichten für denselben Tag. Die Beispieldaten sind ausgedacht.</p>
+      </div>
+      <div class="shots">
+        <figure>
+          <picture>
+            <source srcset="img/brett_dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="img/brett.webp" width="720" height="1560" loading="lazy" alt="Brett mit zehn Zetteln: Top-Thema, Aufstehen, Fokus Zeit, Wasser trinken, Sport, Einkaufen und weitere, oben rechts ein Foto mit Spruch, unten eine Notiz.">
+          </picture>
+          <figcaption><h3>Das Brett</h3><span>Alle zehn Zettel auf einen Blick. Jede Art hat ihr eigenes Wort und Symbol, nicht nur eine Farbe.</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source srcset="img/zeitleiste_dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="img/zeitleiste.webp" width="720" height="1560" loading="lazy" alt="Zeitleiste ab 11 Uhr: das Top-Thema, Wasser trinken, Fokus Zeit und Spaziergang untereinander, oben „ganzer Tag“.">
+          </picture>
+          <figcaption><h3>Die Zeitleiste</h3><span>Dein Tagesplan nach Uhrzeit. Zettel per Finger verschieben, freie Zeit antippen und einplanen.</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source srcset="img/fortschritt_dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="img/fortschritt.webp" width="720" height="1560" loading="lazy" alt="Fortschritt der letzten 4 Wochen: ein Baum aus kleinen Zetteln als Blätter, 229 erledigte Dinge und die Anzeige „Voller Schwung“.">
+          </picture>
+          <figcaption><h3>Der Fortschritt</h3><span>Woche, 4 Wochen, Jahr: was du geschafft hast, wann es gut läuft, welche Gewohnheiten halten. Jedes erledigte Ding wird ein Blatt am Baum.</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source srcset="img/listen_dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="img/listen.webp" width="720" height="1560" loading="lazy" alt="Listen als Klemmbretter: vorn die Einkaufsliste für den Supermarkt mit Milch, Äpfeln, Kaffee, Tomaten und Haferflocken, dahinter Parkplatz und Notizen.">
+          </picture>
+          <figcaption><h3>Die Listen</h3><span>Einkaufsliste nach Läden, Parkplatz und Notizen. Einsprechen geht auch.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="img/checkliste.webp" width="720" height="1560" loading="lazy" alt="Ein geöffneter Zettel „Steuer machen“ mit Checkliste: zwei von vier Punkten abgehakt, darunter der Knopf „Erledigt“.">
+          <figcaption><h3>Checkliste am Zettel</h3><span>Untertitel und Liste direkt an der Aufgabe. Abhaken, ergänzen, mitnehmen auf morgen.</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source srcset="img/fenster_dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="img/fenster.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster: die Zettel kleben auf einer Fensterscheibe mit Blick auf Berge, außen eine Backsteinwand.">
+          </picture>
+          <figcaption><h3>Das Fenster</h3><span>Zettel auf der Scheibe, dahinter Meer, Berge, Stadt – oder dein eigenes Foto.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="stile">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Stile</span>
+        <h2>Dein Brett, dein Stil</h2>
+        <p>Korkwand, Whiteboard, Fenster, Bento, Glas &amp; Glow, Editorial oder Klar als ruhige Liste nach Uhrzeit. Dazu ein Spruch, ein Foto und kleine Accessoires. Hell und dunkel.</p>
+      </div>
+      <div class="styles">
+        <figure><img src="img/whiteboard.webp" width="720" height="1560" loading="lazy" alt="Stil Whiteboard: Zettel mit Magneten auf einer weißen Tafel."><figcaption>Whiteboard</figcaption></figure>
+        <figure><picture><source srcset="img/glas_dark.webp" media="(prefers-color-scheme: dark)"><img src="img/glas.webp" width="720" height="1560" loading="lazy" alt="Stil Glas &amp; Glow: Aufgaben als Liste auf mattem Glas vor sanftem Farbverlauf."></picture><figcaption>Glas &amp; Glow</figcaption></figure>
+        <figure><img src="img/bento.webp" width="720" height="1560" loading="lazy" alt="Stil Bento: kräftige Kacheln, eine Form je Art."><figcaption>Bento</figcaption></figure>
+        <figure><picture><source srcset="img/klar_dark.webp" media="(prefers-color-scheme: dark)"><img src="img/klar.webp" width="720" height="1560" loading="lazy" alt="Stil Klar: eine ruhige Liste, links die Uhrzeit, große Schrift."></picture><figcaption>Klar</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="tablet">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Handy und Tablet</span>
+        <h2>Auch auf dem Tablet zu Hause</h2>
+        <p>Hochkant oder quer: Auf dem Tablet hat dein Brett viel Platz, Zeitleiste und Listen stehen nebeneinander, und der Fortschritt zeigt alles auf einen Blick.</p>
+      </div>
+      <figure class="tab">
+        <img src="img/tablet.webp" width="1200" height="750" loading="lazy" alt="Ten &amp; Done auf einem Tablet quer: das Korkbrett mit zehn Zetteln, einer Notiz und einem Spruch.">
+      </figure>
+    </div>
+  </section>
+
+  <section id="tack">
+    <div class="wrap tack">
+      <img src="img/tack_hello.svg" width="180" height="180" alt="Tack, ein gelbes Gesicht mit lila Ohren und einem kleinen Pflänzchen auf dem Kopf.">
+      <div class="bubble">
+        <q>Einer weniger. Und jetzt der nächste.</q>
+        <p>Das ist Tack. Tack freut sich mit dir, schubst dich an und gibt jeden Tag einen kurzen Tipp gegen das Aufschieben. Mehr will Tack nicht. Wer es lieber schlicht mag, wählt ein anderes Aussehen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="daten">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Deine Daten</span>
+        <h2>Dein Plan gehört dir</h2>
+        <p>Ten &amp; Done braucht kein Internet zum Planen. Was du aufschreibst, bekommen wir nie zu sehen.</p>
+      </div>
+      <ul class="promise">
+        <li><strong>Kein Konto</strong><span>Keine Anmeldung, keine E-Mail-Adresse, kein Passwort.</span></li>
+        <li><strong>Kein Server</strong><span>Alles liegt auf deinem Handy und geht auch offline. Ist die Google-Sicherung deines Handys an, nimmt Android die Daten verschlüsselt mit aufs neue Handy.</span></li>
+        <li><strong>Keine Werbung</strong><span>Nichts blinkt, nichts wird dir verkauft.</span></li>
+        <li><strong>Keine Auswertung</strong><span>Keine Tracker und keine Nutzungsstatistik.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="preis">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Preis</span>
+        <h2>Frei – und Premium, wenn du mehr willst</h2>
+        <p>Den Kern bekommst du ohne Kauf und ohne Zeitlimit. Premium gibt es als Jahresabo oder zum einmaligen Kauf, ohne Probezeit, die abläuft.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Frei</h3>
+          <ul>
+            <li>10 Aufgaben am Tag mit Top-Thema und Punkten</li>
+            <li>Gewohnheiten, Fokus Zeit, Kalender</li>
+            <li>Zeitleiste, Einkaufsliste, Parkplatz, Notizen</li>
+            <li>Brett-Widget und Einsprechen</li>
+            <li>Fortschritt der Woche</li>
+            <li>Stile Kork und Glas &amp; Glow</li>
+          </ul>
+        </div>
+        <div class="plan plus">
+          <h3>Premium</h3>
+          <ul>
+            <li>Alle Stile, Farben und Schriften</li>
+            <li>Fortschritt über 4 Wochen und das ganze Jahr</li>
+            <li>Große Aufgaben in Schritten</li>
+            <li>Gäste zu Terminen einladen</li>
+            <li>Listen-Widget, Sparschwein, Urkunden</li>
+            <li>Mehr Figuren und Accessoires für Tack</li>
+          </ul>
+          <p>Endet ein Abo, bleibt alles, was du eingerichtet hast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fragen">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Fragen</span>
+        <h2>Gut zu wissen</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Warum genau zehn?</summary>
+          <p>Zehn Dinge passen auf einen Bildschirm und in einen Tag. Wer mehr plant, schafft meist weniger und ärgert sich abends über den Rest. Zu viel sind zehn nicht: Die Zettel dürfen so klein sein, wie es dir heute passt.</p>
+        </details>
+        <details>
+          <summary>Und wenn mir keine zehn Dinge einfallen?</summary>
+          <p>Dann nimm kleine. „Ein Glas Wasser trinken“ zählt genauso wie „Steuer machen“. Tipp auf 💡, dann schlägt Tack dir etwas vor: Dinge, die du schon mal geschafft hast, Einträge vom Parkplatz und kleine Ideen.</p>
+        </details>
+        <details>
+          <summary>Was passiert, wenn ich etwas nicht schaffe?</summary>
+          <p>Der Punkt, den du gesetzt hast, ist weg. Mehr passiert nicht. Am nächsten Morgen fragt Tack, was mit dem Zettel geschehen soll: neu einplanen, in Schritte teilen oder weglassen.</p>
+        </details>
+        <details>
+          <summary>Ich bin krank oder im Urlaub. Und jetzt?</summary>
+          <p>Trag die Tage ein. Dann gibt es keinen Plan, keine Erinnerungen und keine Abzüge. Deine Serie wartet, bis du wieder da bist.</p>
+        </details>
+        <details>
+          <summary>Kann ich auch mehr als zehn Dinge erledigen?</summary>
+          <p>Ja. Nach dem Festmachen kommt alles Neue als Extra dazu. Extras bringen keine Punkte, du siehst sie aber im Fortschritt.</p>
+        </details>
+        <details>
+          <summary>Kostet Ten &amp; Done etwas?</summary>
+          <p>Der Kern ist frei: 10 Aufgaben am Tag, Gewohnheiten, Fokus Zeit, Kalender, Listen, Notizen, Widget und der Fortschritt der Woche. Premium gibt es als Jahresabo oder zum einmaligen Kauf.</p>
+        </details>
+        <details>
+          <summary>Gibt es ein Widget?</summary>
+          <p>Ja. Das Brett-Widget zeigt deinen Tagesplan auf dem Startbildschirm, im Stil deines Bretts. Dort kannst du auch abhaken. Ein kleines Widget nimmt neue Aufgaben per Sprache auf.</p>
+        </details>
+        <details>
+          <summary>Sieht die App meinen Kalender?</summary>
+          <p>Nur wenn du es einschaltest. Dann zeigt sie Termine aus dem Kalender deines Handys als Zettel. Legst du in der App einen Termin an, trägt sie ihn in deinen Google Kalender ein. Andere Termine ändert sie nicht.</p>
+        </details>
+        <details>
+          <summary>Läuft die App auf dem Tablet?</summary>
+          <p>Ja, hochkant und quer. Auf dem Tablet stehen Zeitleiste und Listen nebeneinander, der Fortschritt in Spalten.</p>
+        </details>
+        <details>
+          <summary>Gibt es Ten &amp; Done fürs iPhone?</summary>
+          <p>Zuerst erscheint die App für Android-Handys und -Tablets. Eine Version fürs iPhone ist geplant.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap contact">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Ein Problem oder eine Idee?</h2>
+      <p>Schreib uns. Jede Nachricht wird gelesen.</p>
+      <p class="mail"><a href="mailto:az@expansionssupport.de">az@expansionssupport.de</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ten &amp; Done</span>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="en/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
