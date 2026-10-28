@@ -129,6 +129,34 @@ p { margin: 0; }
 }
 .phone img { border-radius: 30px; width: 100%; aspect-ratio: 720 / 1560; object-fit: cover; }
 
+/* Kopf: „Erledigt.“ als Stempel wie auf den Zetteln (Nutzer 28.10., Variante A) */
+.note { --stamp-ink: #17663b; }
+.hero h1 .stamp {
+  display: inline-block; color: var(--stamp-ink); border: 4px solid currentColor; border-radius: 10px;
+  padding: 0 .16em .04em; margin-top: .12em; transform: rotate(-4deg); line-height: 1.05;
+}
+/* Band unter dem Kopf: drei Zettel zu „Struktur“ – Zeichen + Wort, nicht nur Farbe */
+.pillars {
+  list-style: none; margin: 0 auto; padding-bottom: 44px; display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;
+}
+.pillars li {
+  background: var(--surface); color: var(--fg); box-shadow: var(--note-shadow); padding: 18px 18px 16px;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; align-content: start;
+}
+.pillars li:nth-child(1) { transform: rotate(-1deg); }
+.pillars li:nth-child(2) { transform: rotate(.8deg); }
+.pillars li:nth-child(3) { transform: rotate(-.6deg); }
+.pillars .sym {
+  grid-row: span 2; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent); font: 700 1.25rem/1 var(--display);
+}
+.pillars strong { font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
+.pillars li > span:last-child { color: var(--muted); font-size: .97rem; line-height: 1.4; }
+@media (max-width: 760px) {
+  .pillars { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-bottom: 36px; max-width: 520px; }
+}
+
 /* Abschnitte */
 section { padding-block: 72px; }
 section + section { border-top: 1px solid var(--line); }
