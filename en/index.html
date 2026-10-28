@@ -348,5 +348,14 @@
   </div>
 </footer>
 
+<script>
+// iPhone/iPad: Handy-Bilder mit iPhone-Leisten (img/*_ios*.webp), sonst Android.
+if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) {
+  document.querySelectorAll('img[src$=".webp"], source[srcset$=".webp"]').forEach(function (e) {
+    var a = e.tagName === 'IMG' ? 'src' : 'srcset', v = e.getAttribute(a);
+    if (!/tablet/.test(v)) e.setAttribute(a, v.replace(/(_dark)?\.webp$/, '_ios$1.webp'));
+  });
+}
+</script>
 </body>
 </html>
