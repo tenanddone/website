@@ -342,7 +342,8 @@
       <span class="eyebrow">Contact</span>
       <h2>A problem or an idea?</h2>
       <p>Write to us. We read every message.</p>
-      <p class="mail"><a href="mailto:hallo@tenanddone.app">hallo@tenanddone.app</a></p>
+      <p class="mail"><a href="mailto:hallo@tenanddone.app">hallo@tenanddone.app</a><button class="copy" type="button" data-copy="hallo@tenanddone.app" data-done="✓ Copied">📋 Copy address</button></p>
+      <p class="hint">No mail app opens when you click? Copy the address and paste it into your mailbox, e.g. Gmail or Outlook.com.</p>
     </div>
   </section>
 </main>
@@ -366,6 +367,17 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     if (!/tablet/.test(v)) e.setAttribute(a, v.replace(/(_dark)?\.webp$/, '_ios$1.webp'));
   });
 }
+// Kontakt: Adresse kopieren (Nutzer 28.10.).
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var v = b.getAttribute('data-copy'), done = function () {
+      var old = b.textContent; b.textContent = b.getAttribute('data-done');
+      setTimeout(function () { b.textContent = old; }, 2500);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(v).then(done, function () { window.prompt('', v); });
+    else window.prompt('', v);
+  });
+});
 </script>
 </body>
 </html>

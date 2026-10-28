@@ -361,7 +361,8 @@
       <span class="eyebrow">Kontakt</span>
       <h2>Ein Problem oder eine Idee?</h2>
       <p>Schreib uns. Jede Nachricht wird gelesen.</p>
-      <p class="mail"><a href="mailto:hallo@tenanddone.app">hallo@tenanddone.app</a></p>
+      <p class="mail"><a href="mailto:hallo@tenanddone.app">hallo@tenanddone.app</a><button class="copy" type="button" data-copy="hallo@tenanddone.app" data-done="✓ Kopiert">📋 Adresse kopieren</button></p>
+      <p class="hint">Öffnet sich beim Klick kein Mail-Programm? Adresse kopieren und in deinem Postfach einfügen, z. B. bei Gmail, GMX oder Web.de.</p>
     </div>
   </section>
 </main>
@@ -385,6 +386,17 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     if (!/tablet/.test(v)) e.setAttribute(a, v.replace(/(_dark)?\.webp$/, '_ios$1.webp'));
   });
 }
+// Kontakt: Adresse kopieren (Nutzer 28.10.: Klick auf die Adresse öffnete ein nie eingerichtetes Outlook).
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var v = b.getAttribute('data-copy'), done = function () {
+      var old = b.textContent; b.textContent = b.getAttribute('data-done');
+      setTimeout(function () { b.textContent = old; }, 2500);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(v).then(done, function () { window.prompt('', v); });
+    else window.prompt('', v);
+  });
+});
 </script>
 </body>
 </html>

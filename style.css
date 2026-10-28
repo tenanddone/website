@@ -232,6 +232,12 @@ section + section { border-top: 1px solid var(--line); }
 
 .contact { display: grid; gap: 14px; max-width: 640px; }
 .mail { font-weight: 800; font-size: 1.1rem; user-select: all; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.copy {
+  font: 800 .95rem/1 var(--body); padding: 10px 14px; border-radius: 12px; cursor: pointer;
+  background: var(--accent-soft); color: var(--fg); border: 1px solid var(--line);
+}
+.contact .hint { color: var(--muted); font-size: .95rem; }
 
 footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: .92rem; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
