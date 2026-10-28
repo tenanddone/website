@@ -30,27 +30,8 @@
   --display: "Fredoka", "Nunito Sans", system-ui, sans-serif;
   --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --hand: "Schoolbell", "Comic Sans MS", cursive;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1a1822; --surface: #24212f; --surface2: #2e2a3b; --fg: #edebf5; --muted: #a7a3b8; --line: #383349;
-    --accent: #9c88ff; --accent-fg: #15131f; --accent-soft: #2e2752; --good: #5bd08d; --bad: #ff8a70;
-    --note-a: #e3c94a; --note-a-fg: #2b2200; --note-b: #79c96c; --note-b-fg: #0b2a0e;
-    --note-c: #b3a2f2; --note-c-fg: #1e1450; --note-f: #eea3c2; --note-f-fg: #3d0820;
-    --cork: url("img/cork_dark.webp"); --frame: #4a3020;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .3);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #1a1822; --surface: #24212f; --surface2: #2e2a3b; --fg: #edebf5; --muted: #a7a3b8; --line: #383349;
-  --accent: #9c88ff; --accent-fg: #15131f; --accent-soft: #2e2752; --good: #5bd08d; --bad: #ff8a70;
-  --note-a: #e3c94a; --note-a-fg: #2b2200; --note-b: #79c96c; --note-b-fg: #0b2a0e;
-  --note-c: #b3a2f2; --note-c-fg: #1e1450; --note-f: #eea3c2; --note-f-fg: #3d0820;
-  --cork: url("img/cork_dark.webp"); --frame: #4a3020;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .3);
-  color-scheme: dark;
+  /* Immer hell, auch wenn das Gerät dunkel ist (Nutzer 28.10.). */
+  color-scheme: light only;
 }
 
 * { box-sizing: border-box; }
