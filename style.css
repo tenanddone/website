@@ -162,9 +162,10 @@ section + section { border-top: 1px solid var(--line); }
 .shots figcaption { display: grid; gap: 4px; }
 .shots figcaption span { color: var(--muted); }
 
-/* Alle Ansichten (Nutzer 28.10.): 5 + 4 je Reihe, mittig; schmal 2 je Reihe, die letzte mittig. */
+/* Alle Ansichten (Nutzer 28.10.): 5 + 4 je Reihe, mittig; mittel 3 × 3; schmal 2 je Reihe, die letzte mittig.
+   Je 1px Luft, sonst bricht die Rundung die volle Reihe um. */
 .styles { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
-.styles figure { margin: 0; display: grid; gap: 10px; justify-items: center; align-content: start; width: calc((100% - 4 * 22px) / 5); }
+.styles figure { margin: 0; display: grid; gap: 10px; justify-items: center; align-content: start; width: calc((100% - 4 * 22px) / 5 - 1px); }
 .styles img { border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--line); aspect-ratio: 720 / 1560; width: 100%; object-fit: cover; }
 .styles figcaption { font-weight: 800; text-align: center; }
 
@@ -214,8 +215,8 @@ footer a { color: var(--muted); }
 @media (max-width: 900px) {
   .steps, .promise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .styles { max-width: 520px; margin-inline: auto; }
-  .styles figure { width: calc((100% - 22px) / 2); }
+  .styles { max-width: 620px; margin-inline: auto; }
+  .styles figure { width: calc((100% - 2 * 22px) / 3 - 1px); }
 }
 @media (max-width: 760px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 40px 48px; gap: 36px; }
@@ -230,6 +231,7 @@ footer a { color: var(--muted); }
 @media (max-width: 480px) {
   .steps, .promise, .plans { grid-template-columns: minmax(0, 1fr); }
   .shots { grid-template-columns: minmax(0, 1fr); max-width: 340px; margin-inline: auto; }
+  .styles figure { width: calc((100% - 22px) / 2 - 1px); }
   .tab { padding: 8px; border-radius: 18px; }
   .hero .note { padding: 26px 20px 22px; }
 }
