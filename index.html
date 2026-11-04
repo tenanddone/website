@@ -231,10 +231,10 @@
       <div class="styles">
         <figure><picture><img src="img/brett.webp" width="720" height="1560" loading="lazy" alt="Stil Kork: bunte Zettel mit Nadeln an einer Korkwand im Holzrahmen."></picture><figcaption><b>Kork</b><span class="say-style">Grober Kork im Holzrahmen, Handschrift, Nadeln und Klebeband.</span></figcaption></figure>
         <figure><picture><img src="img/leinen.webp" width="720" height="1560" loading="lazy" alt="Stil Leinen: ruhige Zettel in gedeckten Farben mit kleinen grauen Nadeln auf Leinen im hellen Birkenrahmen."></picture><figcaption><b>Leinen</b><span class="say-style">Ruhig wie ein Notizbuch: Leinen im hellen Rahmen, gedeckte Farben, kleine Nadeln.</span></figcaption></figure>
+        <figure><picture><img src="img/whiteboard.webp" width="720" height="1560" loading="lazy" alt="Stil Whiteboard: Zettel mit Magneten auf einer weißen Tafel."></picture><figcaption><b>Whiteboard</b><span class="say-style">Glänzende Tafel im Alurahmen, jeder Zettel hält mit einem Magneten.</span></figcaption></figure>
+        <figure><picture><img src="img/bento.webp" width="720" height="1560" loading="lazy" alt="Stil Bento: kräftige Kacheln, Farbe und Zeichen je Art."></picture><figcaption><b>Bento</b><span class="say-style">Kräftige Kacheln, Farbe und Zeichen je Art, klare Schrift.</span></figcaption></figure>
         <figure><picture><img src="img/fenster.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster mit Rahmen: Zettel auf einer Fensterscheibe mit Sprossen, Blick auf Berge."></picture><figcaption><b>Fenster · mit Rahmen</b><span class="say-style">Eine Scheibe mit Sprossen und Aussicht, die Zettel kleben auf dem Glas. Auch mit deinem eigenen Foto.</span></figcaption></figure>
         <figure><picture><img src="img/fenster_c.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster ohne Rahmen: Zettel auf einer großen Scheibe mit Blick aufs Meer."></picture><figcaption><b>Fenster · ohne Rahmen</b><span class="say-style">Eine große Glasscheibe, nichts als die Aussicht und deine Zettel.</span></figcaption></figure>
-        <figure><picture><img src="img/whiteboard.webp" width="720" height="1560" loading="lazy" alt="Stil Whiteboard: Zettel mit Magneten auf einer weißen Tafel."></picture><figcaption><b>Whiteboard</b><span class="say-style">Glänzende Tafel im Alurahmen, jeder Zettel hält mit einem Magneten.</span></figcaption></figure>
-        <figure><picture><img src="img/bento.webp" width="720" height="1560" loading="lazy" alt="Stil Bento: kräftige Kacheln, eine Form je Art."></picture><figcaption><b>Bento</b><span class="say-style">Kräftige Kacheln, eine eigene Form je Art, klare Schrift.</span></figcaption></figure>
         <figure><picture><img src="img/glas.webp" width="720" height="1560" loading="lazy" alt="Stil Glas &amp; Glow: Aufgaben als Liste auf mattem Glas vor sanftem Farbverlauf."></picture><figcaption><b>Glas &amp; Glow</b><span class="say-style">Mattes Glas über leuchtendem Farbschimmer.</span></figcaption></figure>
         <figure><picture><img src="img/editorial.webp" width="720" height="1560" loading="lazy" alt="Stil Editorial: große Schrift in Schwarz-Weiß wie ein Fahrplan, eine Akzentfarbe."></picture><figcaption><b>Editorial</b><span class="say-style">Große Serifen-Schrift, Schwarz-Weiß und eine Akzentfarbe.</span></figcaption></figure>
         <figure><picture><img src="img/klar.webp" width="720" height="1560" loading="lazy" alt="Stil Klar: eine ruhige Liste, links die Uhrzeit."></picture><figcaption><b>Klar</b><span class="say-style">Eine ruhige Liste: Uhrzeit links, große Schrift, alle Zettel auf einen Blick.</span></figcaption></figure>
@@ -435,14 +435,46 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     var now = document.createElement('p'); now.className = 'style-now'; now.setAttribute('aria-live', 'polite');
     var pick = document.createElement('div'); pick.className = 'style-pick';
     var auto = document.createElement('button'); auto.type = 'button'; auto.className = 'style-auto';
-    var i = 0, timer = null;
+    var i = 0, timer = null, wanted = true;
     var btns = figs.map(function (f, k) {
       var c = f.querySelector('figcaption b');
       var n = document.createElement('button'); n.type = 'button'; n.textContent = c.textContent;
       n.addEventListener('click', function () { stop(); go(k); });
-      pick.appendChild(n);
       return n;
     });
+    // Drei Reihen (Nutzer 04.11.: „zu durcheinander“): 4, die beiden Fenster, 4.
+    var at = 0;
+    [4, 2, 4].forEach(function (r) {
+      var row = document.createElement('div'); row.className = 'style-row';
+      btns.slice(at, at + r).forEach(function (n) { row.appendChild(n); });
+      pick.appendChild(row);
+      at += r;
+    });
+    // Wischen in beide Richtungen, am Computer mit der Maus ziehen (Nutzer 04.11.: „auch zurück wischen“). Wer wischt, wählt selbst: Die Slideshow hält an.
+    var sx = null, sy = 0;
+    function drop() { figs[i].style.transform = ''; stage.classList.remove('drag'); sx = null; }
+    stage.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.button) return;
+      sx = e.clientX; sy = e.clientY;
+      stage.classList.add('drag');
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (sx !== null) figs[i].style.transform = 'translateX(' + (e.clientX - sx) * .5 + 'px)';
+    });
+    stage.addEventListener('pointerup', function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy;
+      drop();
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      wanted = false;
+      stop();
+      stage.classList.add('swiped');
+      go((i + (dx < 0 ? 1 : -1) + figs.length) % figs.length);
+      setTimeout(function () { stage.classList.remove('swiped'); }, 300);
+    });
+    stage.addEventListener('pointercancel', drop);
     function go(k) {
       i = k;
       figs.forEach(function (f, x) { f.classList.toggle('on', x === k); });
@@ -461,7 +493,6 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     label();
     if (!calm && 'IntersectionObserver' in window) {
       // Läuft nur, solange die Slideshow zu sehen ist.
-      var wanted = true;
       auto.addEventListener('click', function () { wanted = !!timer; });
       btns.forEach(function (n) { n.addEventListener('click', function () { wanted = false; }); });
       new IntersectionObserver(function (e) {

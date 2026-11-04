@@ -220,10 +220,10 @@
       <div class="styles">
         <figure><picture><img src="../img/brett_en.webp" width="720" height="1560" loading="lazy" alt="Cork style: colorful notes pinned to a cork wall in a wooden frame."></picture><figcaption><b>Cork</b><span class="say-style">Coarse cork in a wooden frame, handwriting, pins and tape.</span></figcaption></figure>
         <figure><picture><img src="../img/leinen_en.webp" width="720" height="1560" loading="lazy" alt="Linen style: calm notes in muted colors with small gray pins on linen in a light birch frame."></picture><figcaption><b>Linen</b><span class="say-style">Calm like a notebook: linen in a light frame, muted colors, small pins.</span></figcaption></figure>
+        <figure><picture><img src="../img/whiteboard_en.webp" width="720" height="1560" loading="lazy" alt="Whiteboard style: notes held by magnets on a white board."></picture><figcaption><b>Whiteboard</b><span class="say-style">Glossy board in an aluminum frame, every note held by a magnet.</span></figcaption></figure>
+        <figure><picture><img src="../img/bento_en.webp" width="720" height="1560" loading="lazy" alt="Bento style: bold tiles, a color and icon for each kind."></picture><figcaption><b>Bento</b><span class="say-style">Bold tiles, a color and icon for each kind, clear type.</span></figcaption></figure>
         <figure><picture><img src="../img/fenster_en.webp" width="720" height="1560" loading="lazy" alt="Window style with frame: notes on a window pane with glazing bars, mountain view."></picture><figcaption><b>Window · with frame</b><span class="say-style">A pane with glazing bars and a view, notes stuck on the glass. Your own photo works too.</span></figcaption></figure>
         <figure><picture><img src="../img/fenster_c_en.webp" width="720" height="1560" loading="lazy" alt="Frameless window style: notes on a large pane with a sea view."></picture><figcaption><b>Window · frameless</b><span class="say-style">One large pane of glass, nothing but the view and your notes.</span></figcaption></figure>
-        <figure><picture><img src="../img/whiteboard_en.webp" width="720" height="1560" loading="lazy" alt="Whiteboard style: notes held by magnets on a white board."></picture><figcaption><b>Whiteboard</b><span class="say-style">Glossy board in an aluminum frame, every note held by a magnet.</span></figcaption></figure>
-        <figure><picture><img src="../img/bento_en.webp" width="720" height="1560" loading="lazy" alt="Bento style: bold tiles, one shape per kind."></picture><figcaption><b>Bento</b><span class="say-style">Bold tiles, a shape for each kind, clear type.</span></figcaption></figure>
         <figure><picture><img src="../img/glas_en.webp" width="720" height="1560" loading="lazy" alt="Glass &amp; Glow style: tasks as a list on frosted glass over a soft gradient."></picture><figcaption><b>Glass &amp; Glow</b><span class="say-style">Frosted glass over a glowing shimmer.</span></figcaption></figure>
         <figure><picture><img src="../img/editorial_en.webp" width="720" height="1560" loading="lazy" alt="Editorial style: large black-and-white type like a timetable, one accent color."></picture><figcaption><b>Editorial</b><span class="say-style">Large serif type, black and white and one accent color.</span></figcaption></figure>
         <figure><picture><img src="../img/klar_en.webp" width="720" height="1560" loading="lazy" alt="Clear style: a calm list with the time on the left."></picture><figcaption><b>Clear</b><span class="say-style">A calm list: time on the left, large type, all notes at a glance.</span></figcaption></figure>
@@ -424,14 +424,46 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     var now = document.createElement('p'); now.className = 'style-now'; now.setAttribute('aria-live', 'polite');
     var pick = document.createElement('div'); pick.className = 'style-pick';
     var auto = document.createElement('button'); auto.type = 'button'; auto.className = 'style-auto';
-    var i = 0, timer = null;
+    var i = 0, timer = null, wanted = true;
     var btns = figs.map(function (f, k) {
       var c = f.querySelector('figcaption b');
       var n = document.createElement('button'); n.type = 'button'; n.textContent = c.textContent;
       n.addEventListener('click', function () { stop(); go(k); });
-      pick.appendChild(n);
       return n;
     });
+    // Drei Reihen (Nutzer 04.11.: „zu durcheinander“): 4, die beiden Fenster, 4.
+    var at = 0;
+    [4, 2, 4].forEach(function (r) {
+      var row = document.createElement('div'); row.className = 'style-row';
+      btns.slice(at, at + r).forEach(function (n) { row.appendChild(n); });
+      pick.appendChild(row);
+      at += r;
+    });
+    // Wischen in beide Richtungen, am Computer mit der Maus ziehen (Nutzer 04.11.: „auch zurück wischen“). Wer wischt, wählt selbst: Die Slideshow hält an.
+    var sx = null, sy = 0;
+    function drop() { figs[i].style.transform = ''; stage.classList.remove('drag'); sx = null; }
+    stage.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.button) return;
+      sx = e.clientX; sy = e.clientY;
+      stage.classList.add('drag');
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (sx !== null) figs[i].style.transform = 'translateX(' + (e.clientX - sx) * .5 + 'px)';
+    });
+    stage.addEventListener('pointerup', function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy;
+      drop();
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      wanted = false;
+      stop();
+      stage.classList.add('swiped');
+      go((i + (dx < 0 ? 1 : -1) + figs.length) % figs.length);
+      setTimeout(function () { stage.classList.remove('swiped'); }, 300);
+    });
+    stage.addEventListener('pointercancel', drop);
     function go(k) {
       i = k;
       figs.forEach(function (f, x) { f.classList.toggle('on', x === k); });
@@ -450,7 +482,6 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     label();
     if (!calm && 'IntersectionObserver' in window) {
       // Läuft nur, solange die Slideshow zu sehen ist.
-      var wanted = true;
       auto.addEventListener('click', function () { wanted = !!timer; });
       btns.forEach(function (n) { n.addEventListener('click', function () { wanted = false; }); });
       new IntersectionObserver(function (e) {

@@ -212,7 +212,11 @@ section + section { border-top: 1px solid var(--line); }
 /* Slideshow der Stile (Nutzer 04.11.: lebendiger): ohne Skript bleibt das Raster oben. */
 .styles.live { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; align-items: center; justify-content: center; }
 .styles.live .stage { position: relative; aspect-ratio: 720 / 1560; width: 100%; }
-.styles.live figure { position: absolute; inset: 0; width: 100%; margin: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
+.styles.live figure { position: absolute; inset: 0; width: 100%; margin: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s, transform .25s ease; }
+.styles.live .stage { touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
+.styles.live .stage.drag { cursor: grabbing; }
+.styles.live .stage.drag figure { transition: none; }
+.styles.live .stage.swiped figure { transition: opacity .25s ease, visibility .25s, transform .25s ease; }
 .styles.live figure.on { opacity: 1; visibility: visible; }
 .styles.live figure img { width: 100%; }
 .styles.live figcaption { display: none; }
@@ -220,10 +224,12 @@ section + section { border-top: 1px solid var(--line); }
 .style-now { min-height: 4.4em; }
 .style-now b { display: block; font: 800 1.5rem/1.2 var(--display, var(--body)); }
 .style-now span { color: var(--muted); }
-.style-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.style-pick { display: grid; gap: 8px; max-width: 520px; }
+.style-row { display: flex; gap: 8px; }
+.style-row button { flex: 1 1 auto; position: relative; white-space: nowrap; padding-inline: 8px; }
 .style-pick button, .style-auto { padding: 8px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: 700 .95rem/1.2 var(--body); cursor: pointer; }
 .style-pick button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
-.style-pick button[aria-pressed="true"]::before { content: "✓ "; }
+.style-pick button[aria-pressed="true"]::before { content: "✓"; position: absolute; top: -7px; right: -4px; width: 19px; height: 19px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--accent); color: var(--accent); font-size: 11px; line-height: 16px; text-align: center; }
 .style-auto { justify-self: start; background: transparent; }
 /* Kleine Bewegungen, nur wenn das Gerät sie nicht abgeschaltet hat. */
 @media (prefers-reduced-motion: no-preference) {
@@ -300,11 +306,16 @@ footer a { color: var(--muted); }
   .grid2, .plans, .tabs, .ten-know, .ten-why { grid-template-columns: minmax(0, 1fr); }
   .styles.live { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .styles.live .stage { max-width: 260px; margin-inline: auto; }
+  .style-pick { max-width: none; }
+  .style-pick button { font-size: .84rem; padding-inline: 6px; }
   .tack { grid-template-columns: minmax(0, 1fr); justify-items: center; }
   .tack img { width: 140px; height: 140px; }
   .bubble::before { left: 50%; top: -12px; margin-left: -12px; border: 12px solid transparent; border-top: 0; border-bottom-color: var(--surface); }
   .top nav a:not([hreflang]) { display: none; }
   section { padding-block: 52px; }
+}
+@media (max-width: 360px) {
+  .style-pick button { font-size: .76rem; }
 }
 @media (max-width: 480px) {
   .steps, .promise, .plans { grid-template-columns: minmax(0, 1fr); }
