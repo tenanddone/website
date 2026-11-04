@@ -108,7 +108,8 @@ p { margin: 0; }
   background: #1b1a22; box-shadow: 0 30px 50px -20px rgba(0, 0, 0, .55), 0 0 0 2px #3a3846 inset;
   transform: rotate(1.6deg);
 }
-.phone img { border-radius: 30px; width: 100%; aspect-ratio: 720 / 1560; object-fit: cover; }
+.phone img, .phone video { border-radius: 30px; width: 100%; height: auto; aspect-ratio: 720 / 1560; object-fit: cover; display: block; }
+.film-stop { position: absolute; top: calc(100% + 10px); left: 50%; translate: -50% 0; white-space: nowrap; padding: 7px 14px; border: 0; border-radius: 10px; background: rgba(255, 255, 255, .88); color: #1b1a22; font: 700 .9rem/1.2 var(--body); cursor: pointer; }
 
 /* Kopf: „Erledigt.“ als Stempel wie auf den Zetteln (Nutzer 28.10., Variante A) */
 .note { --stamp-ink: #17663b; }
@@ -151,13 +152,19 @@ section + section { border-top: 1px solid var(--line); }
 }
 .steps p { color: var(--muted); }
 
-.points { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
-.chip { display: inline-flex; gap: 6px; align-items: baseline; padding: 7px 12px; border-radius: 999px; background: var(--surface2); font-weight: 700; font-size: .95rem; }
-.chip b { font-variant-numeric: tabular-nums; }
-.chip .plus { color: var(--good); }
-.chip .minus { color: var(--bad); }
+/* Warum genau zehn (Nutzer 04.11.): gleich unter dem Kopf, drei Zettel zum Wiedererkennen, dann der Grund. */
+.ten-know { list-style: none; margin: 18px 0 40px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.ten-know li { background: var(--note-a); color: var(--note-a-fg); box-shadow: var(--note-shadow); padding: 20px 18px; font: 400 1.32rem/1.3 var(--hand); }
+.ten-know li:nth-child(1) { transform: rotate(-1.2deg); }
+.ten-know li:nth-child(2) { transform: rotate(.8deg); background: var(--note-b); color: var(--note-b-fg); }
+.ten-know li:nth-child(3) { transform: rotate(-.6deg); background: var(--note-c); color: var(--note-c-fg); }
+.ten-why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.ten-why > div { background: var(--surface); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+.ten-why p { color: var(--muted); margin-top: 6px; }
 
 .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+/* Funktionen (Nutzer 04.11.): Einsprechen + 9 Kärtchen = 10; am Computer 3 × 3, damit keine Lücke bleibt. */
+.grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .feature { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: start; }
 .feature .tag {
   width: 56px; height: 56px; display: grid; place-items: center; font: 400 1.6rem/1 var(--hand);
@@ -201,9 +208,38 @@ section + section { border-top: 1px solid var(--line); }
 .styles figure { margin: 0; display: grid; gap: 10px; justify-items: center; align-content: start; width: calc((100% - 4 * 22px) / 5 - 1px); }
 .styles img { border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--line); aspect-ratio: 720 / 1560; width: 100%; object-fit: cover; }
 .styles figcaption { font-weight: 800; text-align: center; }
+.say-style { display: none; }
+/* Slideshow der Stile (Nutzer 04.11.: lebendiger): ohne Skript bleibt das Raster oben. */
+.styles.live { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; align-items: center; justify-content: center; }
+.styles.live .stage { position: relative; aspect-ratio: 720 / 1560; width: 100%; }
+.styles.live figure { position: absolute; inset: 0; width: 100%; margin: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
+.styles.live figure.on { opacity: 1; visibility: visible; }
+.styles.live figure img { width: 100%; }
+.styles.live figcaption { display: none; }
+.style-side { display: grid; gap: 16px; }
+.style-now { min-height: 4.4em; }
+.style-now b { display: block; font: 800 1.5rem/1.2 var(--display, var(--body)); }
+.style-now span { color: var(--muted); }
+.style-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.style-pick button, .style-auto { padding: 8px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: 700 .95rem/1.2 var(--body); cursor: pointer; }
+.style-pick button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.style-pick button[aria-pressed="true"]::before { content: "✓ "; }
+.style-auto { justify-self: start; background: transparent; }
+/* Kleine Bewegungen, nur wenn das Gerät sie nicht abgeschaltet hat. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 .stamp { animation: stamp-in .55s cubic-bezier(.2, 1.5, .4, 1) .5s both; }
+  @keyframes stamp-in { from { opacity: 0; transform: scale(1.9) rotate(-7deg); } }
+  .pin-in > * { opacity: 0; translate: 0 -18px; transition: opacity .5s ease, translate .5s cubic-bezier(.2, 1.3, .4, 1); }
+  .pin-in > :nth-child(2) { transition-delay: .15s; }
+  .pin-in > :nth-child(3) { transition-delay: .3s; }
+  .pin-in.seen > * { opacity: 1; translate: 0 0; }
+}
 
 .tab { margin: 0; padding: 14px; border-radius: 28px; background: #1b1a22; box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .5), 0 0 0 2px #3a3846 inset; }
 .tab img { border-radius: 16px; width: 100%; }
+/* Tablet (Nutzer 04.11.): Brett und Zeitleiste + Listen nebeneinander, am Handy untereinander. */
+.tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.tabs .tab figcaption { color: #f4f1ea; font-weight: 700; text-align: center; padding-top: 10px; }
 
 .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 900px; }
 .plan { background: var(--surface); border-radius: 18px; padding: 24px 24px 22px; box-shadow: var(--shadow); display: grid; gap: 12px; align-content: start; }
@@ -252,6 +288,7 @@ footer a { color: var(--muted); }
 .todo { background: var(--note-a); color: var(--note-a-fg); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
 
 @media (max-width: 900px) {
+  .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps, .promise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shots figure { width: calc((100% - 28px) / 2 - 1px); }
   .styles { max-width: 620px; margin-inline: auto; }
@@ -260,7 +297,9 @@ footer a { color: var(--muted); }
 @media (max-width: 760px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 40px 48px; gap: 36px; }
   .phone { max-width: 260px; }
-  .grid2, .plans { grid-template-columns: minmax(0, 1fr); }
+  .grid2, .plans, .tabs, .ten-know, .ten-why { grid-template-columns: minmax(0, 1fr); }
+  .styles.live { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .styles.live .stage { max-width: 260px; margin-inline: auto; }
   .tack { grid-template-columns: minmax(0, 1fr); justify-items: center; }
   .tack img { width: 140px; height: 140px; }
   .bubble::before { left: 50%; top: -12px; margin-left: -12px; border: 12px solid transparent; border-top: 0; border-bottom-color: var(--surface); }

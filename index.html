@@ -42,7 +42,7 @@
   "image": "https://tenanddone.app/img/og.jpg",
   "screenshot": ["https://tenanddone.app/img/brett.webp", "https://tenanddone.app/img/zeitleiste.webp", "https://tenanddone.app/img/fortschritt.webp"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "featureList": "10 Aufgaben am Tag, Top-Thema, Gewohnheiten-Tracker, Fokus-Timer, Kalender und Termine, Geburtstage und Jahrestage, Zeitleiste, Einkaufsliste, Notizen und Checklisten, Widget, Tablet, Drucken als PDF, Fortschritt, acht Stile"
+  "featureList": "10 Aufgaben am Tag, Top-Thema, Gewohnheiten-Tracker, Fokus-Timer, Kalender und Termine, Geburtstage und Jahrestage, Zeitleiste, Einkaufsliste, Notizen und Checklisten, Widget, Tablet, Drucken als PDF, Fortschritt, neun Stile"
 }
 </script>
 <script type="application/ld+json">
@@ -50,7 +50,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Warum genau zehn Aufgaben am Tag?", "acceptedAnswer": { "@type": "Answer", "text": "Zehn Dinge passen auf einen Bildschirm und in einen Tag. Wer mehr plant, schafft meist weniger und ärgert sich abends über den Rest. Die Zettel dürfen so klein sein, wie es dir heute passt." } },
+    { "@type": "Question", "name": "Warum genau zehn Aufgaben am Tag?", "acceptedAnswer": { "@type": "Answer", "text": "Weil eine Liste ohne Ende nie fertig wird. Zehn Plätze geben jedem Tag dasselbe Ziel: Zehn von zehn heißt fertig. Zehn passen auf einen Bildschirm, alles andere wartet auf dem Parkplatz, und die Zettel dürfen so klein sein, wie es dir heute passt." } },
     { "@type": "Question", "name": "Kostet Ten & Done etwas?", "acceptedAnswer": { "@type": "Answer", "text": "Der Kern ist frei: 10 Aufgaben am Tag, Gewohnheiten, Fokus Zeit, Kalender, Listen, Notizen, Widget und der Fortschritt der Woche. Premium gibt es als Jahresabo oder zum einmaligen Kauf." } },
     { "@type": "Question", "name": "Brauche ich ein Konto?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Keine Anmeldung, keine E-Mail-Adresse. Alles liegt auf deinem Handy, die App funktioniert offline." } },
     { "@type": "Question", "name": "Gibt es ein Widget?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Das Brett-Widget zeigt deinen Tagesplan auf dem Startbildschirm, dort kannst du auch abhaken. Auf Android-Handys nimmt ein kleines Widget neue Aufgaben per Sprache auf." } },
@@ -85,9 +85,10 @@
       </div>
     </div>
     <div class="phone">
-      <picture>
-        <img src="img/brett.webp" width="720" height="1560" fetchpriority="high" alt="Tagesplan als Korkbrett: zehn bunte Zettel, oben das Top-Thema „Steuer machen“ um 11 Uhr, dazu Gewohnheiten, Fokus Zeit, Sport und Einkaufen; zwei Zettel tragen den Stempel „Erledigt“.">
-      </picture>
+      <video class="film" autoplay muted loop playsinline preload="auto" poster="img/brett.webp" width="720" height="1560" aria-label="Kurzer Film aus der App: Auf dem Korkbrett werden die Zettel nacheinander abgehakt, jeder bekommt den Stempel „Erledigt“, dazu Konfetti. Bei zehn von zehn fliegen alle Zettel zu einem Stapel mit dem Schild „Ten &amp; Done“.">
+        <source src="img/film.mp4" type="video/mp4">
+      </video>
+      <button class="film-stop" type="button" data-stop="⏸ Film anhalten" data-go="▶ Film abspielen" hidden>⏸ Film anhalten</button>
     </div>
   </div>
   <ul class="wrap pillars" aria-label="Was Ten &amp; Done deinem Tag gibt">
@@ -98,6 +99,26 @@
 </div>
 
 <main>
+  <section id="warum-zehn" class="ten">
+    <div class="wrap">
+      <span class="eyebrow">Kommt dir das bekannt vor?</span>
+      <ul class="ten-know">
+        <li>Abends stehen immer noch 30 Dinge offen – egal, wie viel ich geschafft habe.</li>
+        <li>Es ist so viel auf einmal, dass ich gar nicht weiß, wo ich anfangen soll.</li>
+        <li>Termine im Kalender, Aufgaben im Kopf, der Einkauf auf einem Zettel, dazu die ganzen Post-its am Kühlschrank. Irgendwas geht immer unter.</li>
+      </ul>
+      <div class="head">
+        <h2>Deine Liste hat kein Ende. Dein Tag schon.</h2>
+        <p>Eine Liste ohne Ende kannst du nie schaffen. Zehn Zettel schon. Darum hat Ten &amp; Done genau zehn Plätze: Dein Tag bekommt ein Ziel, das du wirklich erreichen kannst.</p>
+      </div>
+      <div class="ten-why">
+        <div><h3>Warum nicht mehr?</h3><p>Weil du sonst jeden Abend mit offenen Punkten aufhörst. Es geht nichts verloren: Alles andere wartet auf dem Parkplatz, oder du planst es für einen anderen Tag. Kommt heute doch noch etwas dazu, läuft es als Extra.</p></div>
+        <div><h3>Warum nicht weniger?</h3><p>Weil ein Tag nicht nur aus drei großen Aufgaben besteht. Bei zehn hat auch das Kleine seinen Platz. Termine und Gewohnheiten zählen mit, und ein Glas Wasser zählt wie die Steuer.</p></div>
+        <div><h3>Warum immer genau zehn?</h3><p>Weil du dann nicht jeden Morgen neu überlegen musst, wie viel genug ist. Zehn von zehn heißt: fertig, Feierabend. Heute, morgen, jeden Tag.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section id="so-gehts">
     <div class="wrap">
       <div class="head">
@@ -111,27 +132,6 @@
         <li><h3>Abhaken</h3><p>Jeder erledigte Zettel bekommt seinen Stempel. Kommt Neues dazu, läuft es als Extra.</p></li>
         <li><h3>Abschließen</h3><p>Am Abend entscheidest du: mit auf morgen, später oder kann weg.</p></li>
       </ol>
-      <div class="points" aria-label="Punkte">
-        <span class="chip">Zettel geschafft <b class="plus">+1</b></span>
-        <span class="chip">Top-Thema geschafft <b class="plus">+3</b></span>
-        <span class="chip">Pünktlich festgemacht <b class="plus">+1</b></span>
-        <span class="chip">Heute nicht geschafft <b>±0</b></span>
-        <span class="chip">Extras <b>±0</b></span>
-      </div>
-    </div>
-  </section>
-
-  <section id="fuer-wen">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Für wen</span>
-        <h2>Zwei Arten von vollen Tagen</h2>
-        <p>Dieselbe Grenze hilft beiden: zehn Dinge, fest vorgenommen. Mehr nicht.</p>
-      </div>
-      <div class="grid2">
-        <div class="feature"><span class="tag t-f" aria-hidden="true">47</span><div><h3>Deine Liste wird nie kürzer</h3><p>Du arbeitest viel ab, und abends stehen trotzdem 30 Punkte offen. Hier darf alles auf den Parkplatz, aufs Brett kommen nur zehn. Sind sie geschafft, ist Feierabend – mit gutem Gefühl.</p></div></div>
-        <div class="feature"><span class="tag t-b" aria-hidden="true">▶</span><div><h3>Du willst deinen Tag im Griff haben</h3><p>Termine, Aufgaben, Gewohnheiten – alles an einem Ort, nach Uhrzeit geordnet. Du legst morgens fest, was zählt, kleine Zettel zählen wie große, und Großes teilst du in klare Schritte.</p></div></div>
-      </div>
     </div>
   </section>
 
@@ -142,20 +142,17 @@
         <h2>Alles, was ein Tag braucht – auf zehn Zetteln</h2>
         <p>Aufgaben, Gewohnheiten, Fokus und Termine liegen auf einem Brett. Was nicht gebraucht wird, bleibt aus dem Weg.</p>
       </div>
-      <div class="grid2">
+      <div class="grid2 grid3">
         <div class="feature wide"><span class="tag t-c" aria-hidden="true">🎙️</span><div><h3>Einfach einsprechen</h3><p>Tipp aufs Mikrofon und sag, was ansteht. „Friseur am 3.11. um 13 Uhr“ wird ein Termin, „Bei Rewe Butter kaufen“ kommt auf die Einkaufsliste für Rewe und „Lena hat am 3. Mai Geburtstag“ wird ein Jahrestag. Auf Android auch ohne die App zu öffnen – mit dem Mikrofon-Widget auf dem Startbildschirm.</p></div></div>
-        <div class="feature"><span class="tag t-a" aria-hidden="true">10</span><div><h3>Genau zehn Plätze</h3><p>Der elfte Gedanke muss warten. So planst du nur, was du an einem Tag wirklich schaffen kannst. Ein Zettel ist dein Top-Thema.</p></div></div>
-        <div class="feature"><span class="tag t-c" aria-hidden="true">✓</span><div><h3>Ein Versprechen an dich</h3><p>Du sagst fest zu, indem du den Knopf gedrückt hältst. Für jeden erledigten Zettel erhältst du einen Punkt.</p></div></div>
+        <div class="feature"><span class="tag t-a" aria-hidden="true">10</span><div><h3>Zehn Plätze, ein Versprechen an dich</h3><p>Der elfte Gedanke muss warten. Ein Zettel ist dein Top-Thema. Du sagst fest zu, indem du den Knopf gedrückt hältst.</p></div></div>
         <div class="feature"><span class="tag t-b" aria-hidden="true">↻</span><div><h3>Gewohnheiten-Tracker</h3><p>Sport, Wasser trinken, kein Handy im Bett: Gewohnheiten erscheinen an ihren Tagen von selbst. Mit Strichliste und Serie.</p></div></div>
         <div class="feature"><span class="tag t-f" aria-hidden="true">⏱</span><div><h3>Fokus-Timer</h3><p>Handy umdrehen, die Fokus Zeit läuft. Auf Android ist „Nicht stören“ an, bis du es wieder hochnimmst. Auf dem iPhone zeigt der Sperrbildschirm die Restzeit.</p></div></div>
-        <div class="feature"><span class="tag t-c" aria-hidden="true">📅</span><div><h3>Kalender und Termine</h3><p>Termine aus deinem Kalender kommen als Zettel aufs Brett. Eigene Termine landen in deinem Kalender – bei Google oder Apple, auf Wunsch mit Gästen.</p></div></div>
+        <div class="feature"><span class="tag t-c" aria-hidden="true">📅</span><div><h3>Kalender und Zeitleiste</h3><p>Termine aus deinem Kalender kommen als Zettel aufs Brett, eigene landen in deinem Kalender – bei Google oder Apple, auf Wunsch mit Gästen. Tag oder Woche gibt es auch als PDF – für den Kühlschrank.</p></div></div>
         <div class="feature"><span class="tag t-f" aria-hidden="true">🎂</span><div><h3>Geburtstage und Jahrestage</h3><p>Sag einfach „Lena hat am 3. Mai Geburtstag“. Die App merkt es sich und erinnert dich ein paar Tage vorher.</p></div></div>
         <div class="feature"><span class="tag t-a" aria-hidden="true">☰</span><div><h3>Einkaufsliste, Notizen, Checklisten</h3><p>Einkaufslisten, Notizen oder Checklisten auch per Sprache eingeben und an einen Zettel anhängen, ausdrucken oder per WhatsApp teilen.</p></div></div>
-        <div class="feature"><span class="tag t-b" aria-hidden="true">⏲</span><div><h3>Zeitleiste</h3><p>Wenn Uhrzeiten dazukommen: Zettel mit dem Finger auf eine Uhrzeit ziehen, freie Zeit antippen und einplanen.</p></div></div>
         <div class="feature"><span class="tag t-c" aria-hidden="true">⛰</span><div><h3>Große Brocken in Schritten</h3><p>Ist dir etwas zu groß, teilst du es in drei bis fünf kleine Schritte. Der letzte Schritt ist der Gipfel.</p></div></div>
         <div class="feature"><span class="tag t-a" aria-hidden="true">P</span><div><h3>Ein Parkplatz für alles andere</h3><p>Alles darf auf die Liste – aufs Brett kommen nur zehn. Der Rest wartet auf dem Parkplatz. Sonntags erinnert Tack dich an das, was dort schon lange steht.</p></div></div>
         <div class="feature"><span class="tag t-f" aria-hidden="true">▦</span><div><h3>Widget für den Startbildschirm</h3><p>Dein Tagesplan im Stil deines Bretts. Abhaken, ohne die App zu öffnen. Auf Android nimmt ein kleines Widget neue Aufgaben per Sprache auf.</p></div></div>
-        <div class="feature"><span class="tag t-b" aria-hidden="true">⎙</span><div><h3>Drucken</h3><p>Tag oder Woche als PDF – als Plan für den Kühlschrank oder den Schreibtisch.</p></div></div>
       </div>
     </div>
   </section>
@@ -172,7 +169,7 @@
           <picture>
             <img src="img/brett.webp" width="720" height="1560" loading="lazy" alt="Brett mit zehn Zetteln: Top-Thema, Aufstehen, Fokus Zeit, Wasser trinken, Sport, Einkaufen und weitere, oben rechts ein Foto mit Spruch, unten eine Notiz.">
           </picture>
-          <figcaption><h3>Das Brett</h3><span>Alle zehn Zettel auf einen Blick. Jede Art hat ihr eigenes Wort und Symbol, nicht nur eine Farbe.</span></figcaption>
+          <figcaption><h3>Das Brett</h3><span>Alle zehn Zettel auf einen Blick. Jede Art hat ihr eigenes Symbol, nicht nur eine Farbe.</span></figcaption>
         </figure>
         <figure class="voice">
           <div class="say">
@@ -208,11 +205,11 @@
         </figure>
         <figure>
           <img src="img/widget_kork.webp" width="720" height="1560" loading="lazy" alt="Startbildschirm eines Android-Handys mit dem Brett-Widget im Kork-Stil: zehn Zettel mit Uhrzeit und Kästchen zum Abhaken, oben Mikrofon und Plus. Darunter das kleine Widget mit Mikrofon.">
-          <figcaption><h3>Das Widget</h3><span>Dein Tagesplan auf dem Startbildschirm, im Stil deines Bretts. Abhaken, hochzählen, Fokus Zeit starten – ohne die App zu öffnen.</span></figcaption>
+          <figcaption><h3>Das Widget</h3><span>Dein Tagesplan auf dem Startbildschirm, im Stil deines Bretts. Abhaken, hochzählen, Fokus Zeit starten – ohne die App zu öffnen. Darunter das kleine Widget für Android: Mikrofon antippen und lossprechen.</span></figcaption>
         </figure>
         <figure>
-          <img src="img/widget_bento.webp" width="720" height="1560" loading="lazy" alt="Dasselbe Widget im Stil Bento: flache farbige Kacheln, oben „Noch 9 offen“, Mikrofon und Plus. Darunter das kleine Mikrofon-Widget.">
-          <figcaption><h3>Widget in Bento</h3><span>Das Widget folgt deinem Stil. Mikrofon und ＋ nehmen neue Aufgaben gleich vom Startbildschirm auf. Darunter das kleine Widget für Android: Mikrofon antippen und lossprechen.</span></figcaption>
+          <img src="img/widget_klein.webp" width="720" height="1560" loading="lazy" alt="Startbildschirm eines Android-Handys mit dem Mini-Widget im Stil Bento: oben die Zahl offener Zettel, Mikrofon und Plus, darunter die nächsten Zettel mit Kästchen zum Abhaken.">
+          <figcaption><h3>Das Mini-Widget</h3><span>Deine nächsten Zettel auf kleinem Platz, zum Abhaken. Die Widgets folgen deinem Stil, hier Bento. Das Mini-Widget gibt es mit Premium.</span></figcaption>
         </figure>
         <figure>
           <picture>
@@ -229,18 +226,19 @@
       <div class="head">
         <span class="eyebrow">Stile</span>
         <h2>Dein Brett, dein Stil</h2>
-        <p>Korkwand, Whiteboard, Fenster mit oder ohne Rahmen, Bento, Glas &amp; Glow, Editorial, Klar als ruhige Liste nach Uhrzeit oder Einfach mit großer Schrift. Dazu ein Spruch, ein Foto und kleine Accessoires. Hell und dunkel.</p>
+        <p>Korkwand, Leinen, Whiteboard, Fenster mit oder ohne Rahmen, Bento, Glas &amp; Glow, Editorial, Klar als ruhige Liste nach Uhrzeit oder Einfach mit großer Schrift. Dazu ein Spruch, ein Foto und kleine Accessoires. Hell und dunkel.</p>
       </div>
       <div class="styles">
-        <figure><picture><img src="img/brett.webp" width="720" height="1560" loading="lazy" alt="Stil Kork: bunte Zettel mit Nadeln an einer Korkwand im Holzrahmen."></picture><figcaption>Kork</figcaption></figure>
-        <figure><picture><img src="img/fenster.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster mit Rahmen: Zettel auf einer Fensterscheibe mit Sprossen, Blick auf Berge."></picture><figcaption>Fenster · mit Rahmen</figcaption></figure>
-        <figure><picture><img src="img/fenster_c.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster ohne Rahmen: Zettel auf einer großen Scheibe mit Blick aufs Meer."></picture><figcaption>Fenster · ohne Rahmen</figcaption></figure>
-        <figure><picture><img src="img/whiteboard.webp" width="720" height="1560" loading="lazy" alt="Stil Whiteboard: Zettel mit Magneten auf einer weißen Tafel."></picture><figcaption>Whiteboard</figcaption></figure>
-        <figure><picture><img src="img/bento.webp" width="720" height="1560" loading="lazy" alt="Stil Bento: kräftige Kacheln, eine Form je Art."></picture><figcaption>Bento</figcaption></figure>
-        <figure><picture><img src="img/glas.webp" width="720" height="1560" loading="lazy" alt="Stil Glas &amp; Glow: Aufgaben als Liste auf mattem Glas vor sanftem Farbverlauf."></picture><figcaption>Glas &amp; Glow</figcaption></figure>
-        <figure><picture><img src="img/editorial.webp" width="720" height="1560" loading="lazy" alt="Stil Editorial: große Schrift in Schwarz-Weiß wie ein Fahrplan, eine Akzentfarbe."></picture><figcaption>Editorial</figcaption></figure>
-        <figure><picture><img src="img/klar.webp" width="720" height="1560" loading="lazy" alt="Stil Klar: eine ruhige Liste, links die Uhrzeit."></picture><figcaption>Klar</figcaption></figure>
-        <figure><picture><img src="img/einfach.webp" width="720" height="1560" loading="lazy" alt="Stil Einfach: eine Spalte, große Schrift und große Knöpfe."></picture><figcaption>Einfach</figcaption></figure>
+        <figure><picture><img src="img/brett.webp" width="720" height="1560" loading="lazy" alt="Stil Kork: bunte Zettel mit Nadeln an einer Korkwand im Holzrahmen."></picture><figcaption><b>Kork</b><span class="say-style">Grober Kork im Holzrahmen, Handschrift, Nadeln und Klebeband.</span></figcaption></figure>
+        <figure><picture><img src="img/leinen.webp" width="720" height="1560" loading="lazy" alt="Stil Leinen: ruhige Zettel in gedeckten Farben mit kleinen grauen Nadeln auf Leinen im hellen Birkenrahmen."></picture><figcaption><b>Leinen</b><span class="say-style">Ruhig wie ein Notizbuch: Leinen im hellen Rahmen, gedeckte Farben, kleine Nadeln.</span></figcaption></figure>
+        <figure><picture><img src="img/fenster.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster mit Rahmen: Zettel auf einer Fensterscheibe mit Sprossen, Blick auf Berge."></picture><figcaption><b>Fenster · mit Rahmen</b><span class="say-style">Eine Scheibe mit Sprossen und Aussicht, die Zettel kleben auf dem Glas. Auch mit deinem eigenen Foto.</span></figcaption></figure>
+        <figure><picture><img src="img/fenster_c.webp" width="720" height="1560" loading="lazy" alt="Stil Fenster ohne Rahmen: Zettel auf einer großen Scheibe mit Blick aufs Meer."></picture><figcaption><b>Fenster · ohne Rahmen</b><span class="say-style">Eine große Glasscheibe, nichts als die Aussicht und deine Zettel.</span></figcaption></figure>
+        <figure><picture><img src="img/whiteboard.webp" width="720" height="1560" loading="lazy" alt="Stil Whiteboard: Zettel mit Magneten auf einer weißen Tafel."></picture><figcaption><b>Whiteboard</b><span class="say-style">Glänzende Tafel im Alurahmen, jeder Zettel hält mit einem Magneten.</span></figcaption></figure>
+        <figure><picture><img src="img/bento.webp" width="720" height="1560" loading="lazy" alt="Stil Bento: kräftige Kacheln, eine Form je Art."></picture><figcaption><b>Bento</b><span class="say-style">Kräftige Kacheln, eine eigene Form je Art, klare Schrift.</span></figcaption></figure>
+        <figure><picture><img src="img/glas.webp" width="720" height="1560" loading="lazy" alt="Stil Glas &amp; Glow: Aufgaben als Liste auf mattem Glas vor sanftem Farbverlauf."></picture><figcaption><b>Glas &amp; Glow</b><span class="say-style">Mattes Glas über leuchtendem Farbschimmer.</span></figcaption></figure>
+        <figure><picture><img src="img/editorial.webp" width="720" height="1560" loading="lazy" alt="Stil Editorial: große Schrift in Schwarz-Weiß wie ein Fahrplan, eine Akzentfarbe."></picture><figcaption><b>Editorial</b><span class="say-style">Große Serifen-Schrift, Schwarz-Weiß und eine Akzentfarbe.</span></figcaption></figure>
+        <figure><picture><img src="img/klar.webp" width="720" height="1560" loading="lazy" alt="Stil Klar: eine ruhige Liste, links die Uhrzeit."></picture><figcaption><b>Klar</b><span class="say-style">Eine ruhige Liste: Uhrzeit links, große Schrift, alle Zettel auf einen Blick.</span></figcaption></figure>
+        <figure><picture><img src="img/einfach.webp" width="720" height="1560" loading="lazy" alt="Stil Einfach: eine Spalte, große Schrift und große Knöpfe."></picture><figcaption><b>Einfach</b><span class="say-style">Eine Spalte, große Knöpfe, nur das Wichtigste.</span></figcaption></figure>
       </div>
     </div>
   </section>
@@ -252,9 +250,16 @@
         <h2>Auch auf dem Tablet zu Hause</h2>
         <p>Hochkant oder quer: Auf dem Tablet hat dein Brett viel Platz, Zeitleiste und Listen stehen nebeneinander, und der Fortschritt zeigt alles auf einen Blick.</p>
       </div>
-      <figure class="tab">
-        <img src="img/tablet.webp" width="1200" height="750" loading="lazy" alt="Ten &amp; Done auf einem Tablet quer: das Korkbrett mit zehn Zetteln, einer Notiz und einem Spruch.">
-      </figure>
+      <div class="tabs">
+        <figure class="tab">
+          <img src="img/tablet.webp" width="1200" height="750" loading="lazy" alt="Ten &amp; Done auf einem Tablet quer: das Korkbrett mit zehn Zetteln, einer Notiz und einem Spruch.">
+          <figcaption>Das Brett</figcaption>
+        </figure>
+        <figure class="tab">
+          <img src="img/tablet_zeit.webp" width="1200" height="750" loading="lazy" alt="Ten &amp; Done auf einem Tablet quer: links die Zeitleiste mit Steuer machen, Fokus Zeit und Wasser trinken, rechts die Einkaufsliste als Klemmbrett, dahinter Parkplatz und Notizen.">
+          <figcaption>Zeitleiste und Listen nebeneinander</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -263,7 +268,7 @@
       <img src="img/tack_hello.svg" width="180" height="180" alt="Tack, ein gelber Zettel mit ruhigem Gesicht.">
       <div class="bubble">
         <q>Einer weniger. Und jetzt der nächste.</q>
-        <p>Das ist Tack. Tack freut sich mit dir, schubst dich an und gibt jeden Tag einen kurzen Tipp, wie du deinen Tag gut organisierst. Mehr will Tack nicht. Mit Premium kannst du stattdessen den fröhlichen Tack wählen, der sich an Festtagen verkleidet.</p>
+        <p>Das ist Tack. Tack freut sich mit dir, schubst dich an und gibt jeden Tag einen kurzen Tipp, wie du deinen Tag gut organisierst. Mehr will Tack nicht.</p>
       </div>
     </div>
   </section>
@@ -307,11 +312,13 @@
           <h3>Premium</h3>
           <ul>
             <li>Alle Stile, Farben und Schriften</li>
+            <li>Dein eigenes Foto am Brett, dazu ein zweites Accessoire</li>
             <li>Fortschritt über 4 Wochen und das ganze Jahr</li>
             <li>Große Aufgaben in Schritten</li>
             <li>Gäste zu Terminen einladen</li>
-            <li>Listen-Widget, kleines Widget, Sparschwein</li>
-            <li>Der fröhliche Tack mit Kostümen an Festtagen</li>
+            <li>Zwei weitere Widgets: „Nächste 5“ und Liste</li>
+            <li>Automatische Sicherung bei Google Drive (auf Android)</li>
+            <li>Der fröhliche Tack mit Kostümen an Festtagen und das Sparschwein</li>
           </ul>
           <p>Endet ein Abo, bleibt alles, was du eingerichtet hast.</p>
         </div>
@@ -328,7 +335,7 @@
       <div class="faq">
         <details>
           <summary>Warum genau zehn?</summary>
-          <p>Zehn Dinge passen auf einen Bildschirm und in einen Tag. Wer mehr plant, schafft meist weniger und ärgert sich abends über den Rest. Zu viel sind zehn nicht: Die Zettel dürfen so klein sein, wie es dir heute passt.</p>
+          <p>Weil eine Liste ohne Ende nie fertig wird. Zehn Plätze geben jedem Tag dasselbe Ziel: Zehn von zehn heißt fertig. Zehn passen auf einen Bildschirm, alles andere wartet auf dem Parkplatz, und die Zettel dürfen so klein sein, wie es dir heute passt.</p>
         </details>
         <details>
           <summary>Und wenn mir keine zehn Dinge einfallen?</summary>
@@ -336,7 +343,7 @@
         </details>
         <details>
           <summary>Was passiert, wenn ich etwas nicht schaffe?</summary>
-          <p>Dann gibt es dafür keinen Punkt – sonst passiert nichts. Der Zettel wartet auf dem Parkplatz, und am nächsten Morgen fragt Tack, ob er wieder aufs Brett soll. Bleibt er öfter liegen, schlägt Tack vor, ihn in kleine Schritte zu teilen.</p>
+          <p>Nichts. Der Zettel wartet dann auf dem Parkplatz, und am nächsten Morgen fragt Tack, ob er wieder aufs Brett soll. Bleibt er öfter liegen, schlägt Tack vor, ihn in kleine Schritte zu teilen.</p>
         </details>
         <details>
           <summary>Ich bin krank oder im Urlaub. Und jetzt?</summary>
@@ -400,7 +407,78 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.
     var a = e.tagName === 'IMG' ? 'src' : 'srcset', v = e.getAttribute(a);
     if (!/tablet|widget/.test(v)) e.setAttribute(a, v.replace(/(_dark)?\.webp$/, '_ios$1.webp'));
   });
+  document.querySelectorAll('source[src$=".mp4"]').forEach(function (e) { e.setAttribute('src', e.getAttribute('src').replace(/\.mp4$/, '_ios.mp4')); });
+  document.querySelectorAll('video[poster]').forEach(function (e) { e.setAttribute('poster', e.getAttribute('poster').replace(/\.webp$/, '_ios.webp')); e.load(); });
 }
+// Bewegung (Nutzer 04.11.: „etwas lebendiger“). Wer im Gerät „weniger Bewegung“ eingestellt hat, bekommt nichts Selbstlaufendes.
+(function () {
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Film im Kopf: zeigt echte Bilder aus der App, lässt sich anhalten.
+  document.querySelectorAll('video.film').forEach(function (v) {
+    var b = v.parentNode.querySelector('.film-stop');
+    if (calm) { v.removeAttribute('autoplay'); v.pause(); }
+    if (!b) return;
+    b.hidden = false;
+    var show = function () { b.textContent = b.getAttribute(v.paused ? 'data-go' : 'data-stop'); };
+    b.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+    v.addEventListener('play', show);
+    v.addEventListener('pause', show);
+    show();
+  });
+  // Stile als Slideshow: je Stil ein Knopf mit dem Namen, von selbst weiter, bis jemand wählt.
+  document.querySelectorAll('.styles').forEach(function (box) {
+    var figs = [].slice.call(box.querySelectorAll('figure'));
+    if (!figs.length) return;
+    var stage = document.createElement('div'); stage.className = 'stage';
+    figs.forEach(function (f) { stage.appendChild(f); });
+    var side = document.createElement('div'); side.className = 'style-side';
+    var now = document.createElement('p'); now.className = 'style-now'; now.setAttribute('aria-live', 'polite');
+    var pick = document.createElement('div'); pick.className = 'style-pick';
+    var auto = document.createElement('button'); auto.type = 'button'; auto.className = 'style-auto';
+    var i = 0, timer = null;
+    var btns = figs.map(function (f, k) {
+      var c = f.querySelector('figcaption b');
+      var n = document.createElement('button'); n.type = 'button'; n.textContent = c.textContent;
+      n.addEventListener('click', function () { stop(); go(k); });
+      pick.appendChild(n);
+      return n;
+    });
+    function go(k) {
+      i = k;
+      figs.forEach(function (f, x) { f.classList.toggle('on', x === k); });
+      btns.forEach(function (n, x) { n.setAttribute('aria-pressed', x === k ? 'true' : 'false'); });
+      var c = figs[k].querySelector('figcaption');
+      now.innerHTML = '<b>' + c.querySelector('b').innerHTML + '</b><span>' + c.querySelector('span').innerHTML + '</span>';
+    }
+    function label() { auto.textContent = timer ? '⏸ Anhalten' : '▶ Weiter'; }
+    function start() { timer = setInterval(function () { go((i + 1) % figs.length); }, 3500); label(); }
+    function stop() { if (timer) clearInterval(timer); timer = null; label(); }
+    auto.addEventListener('click', function () { if (timer) stop(); else start(); });
+    side.appendChild(now); side.appendChild(pick); side.appendChild(auto);
+    box.appendChild(stage); box.appendChild(side);
+    box.classList.add('live');
+    go(0);
+    label();
+    if (!calm && 'IntersectionObserver' in window) {
+      // Läuft nur, solange die Slideshow zu sehen ist.
+      var wanted = true;
+      auto.addEventListener('click', function () { wanted = !!timer; });
+      btns.forEach(function (n) { n.addEventListener('click', function () { wanted = false; }); });
+      new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { if (wanted && !timer) start(); } else if (timer) stop();
+      }, { threshold: .3 }).observe(box);
+    }
+  });
+  // Die drei Zettel „Kommt dir das bekannt vor?“ kommen beim Hinrollen nacheinander dazu.
+  if (!calm && 'IntersectionObserver' in window) {
+    document.querySelectorAll('.ten-know').forEach(function (u) {
+      u.classList.add('pin-in');
+      new IntersectionObserver(function (e, o) {
+        if (e[0].isIntersecting) { u.classList.add('seen'); o.disconnect(); }
+      }, { threshold: .2 }).observe(u);
+    });
+  }
+})();
 // Kontakt: Adresse kopieren (Nutzer 28.10.: Klick auf die Adresse öffnete ein nie eingerichtetes Outlook).
 document.querySelectorAll('[data-copy]').forEach(function (b) {
   b.addEventListener('click', function () {
