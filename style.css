@@ -293,6 +293,30 @@ footer a { color: var(--muted); }
 .legal ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
 .todo { background: var(--note-a); color: var(--note-a-fg); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
 
+/* Presse (presse.html, en/press.html): Kurztext zum Kopieren, Fakten, Bilder zum Laden */
+.press { max-width: 880px; }
+.press-text { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow); display: grid; gap: 12px; }
+.press-text p { margin: 0 0 10px; line-height: 1.55; }
+.press-text .copy { justify-self: start; cursor: pointer; font: inherit; font-weight: 800; }
+.facts { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.facts th, .facts td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); line-height: 1.45; }
+.facts tr:last-child th, .facts tr:last-child td { border-bottom: 0; }
+.facts th { width: 9.5em; color: var(--muted); font-weight: 800; }
+.press-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.press-grid figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.press-grid figure.wide { grid-column: span 2; }
+.press-grid a { display: block; border-radius: 12px; overflow: hidden; background: var(--surface2); box-shadow: var(--shadow); }
+.press-grid img { display: block; width: 100%; height: auto; }
+.press-grid figcaption { display: grid; gap: 2px; font-size: .92rem; }
+.press-grid figcaption span { color: var(--muted); }
+.press-note { color: var(--muted); font-size: .92rem; }
+@media (max-width: 640px) {
+  .press-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts th, .facts td { display: block; width: auto; border-bottom: 0; }
+  .facts th { padding-bottom: 0; }
+  .facts td { border-bottom: 1px solid var(--line); padding-top: 2px; }
+}
+
 @media (max-width: 900px) {
   .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps, .promise { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -12,4 +12,16 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://tenanddone.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tenanddone.app/en/"/>
   </url>
+  <url>
+    <loc>https://tenanddone.app/presse.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tenanddone.app/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tenanddone.app/en/press.html"/>
+  </url>
+  <url>
+    <loc>https://tenanddone.app/en/press.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tenanddone.app/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tenanddone.app/en/press.html"/>
+  </url>
 </urlset>
