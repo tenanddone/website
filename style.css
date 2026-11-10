@@ -117,27 +117,6 @@ p { margin: 0; }
   display: inline-block; color: var(--stamp-ink); border: 4px solid currentColor; border-radius: 10px;
   padding: 0 .16em .04em; margin-top: .12em; transform: rotate(-4deg); line-height: 1.05;
 }
-/* Band unter dem Kopf: drei Zettel zu „Struktur“ – Zeichen + Wort, nicht nur Farbe */
-.pillars {
-  list-style: none; margin: 0 auto; padding-bottom: 44px; display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;
-}
-.pillars li {
-  background: var(--surface); color: var(--fg); box-shadow: var(--note-shadow); padding: 18px 18px 16px;
-  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; align-content: start;
-}
-.pillars li:nth-child(1) { transform: rotate(-1deg); }
-.pillars li:nth-child(2) { transform: rotate(.8deg); }
-.pillars li:nth-child(3) { transform: rotate(-.6deg); }
-.pillars .sym {
-  grid-row: span 2; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--accent-soft); color: var(--accent); font: 700 1.25rem/1 var(--display);
-}
-.pillars strong { font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
-.pillars li > span:last-child { color: var(--muted); font-size: .97rem; line-height: 1.4; }
-@media (max-width: 760px) {
-  .pillars { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-bottom: 36px; max-width: 520px; }
-}
 
 /* Abschnitte */
 section { padding-block: 72px; }
@@ -148,9 +127,11 @@ section + section { border-top: 1px solid var(--line); }
 
 /* Warum genau zehn (Nutzer 04.11.): gleich unter dem Kopf ein Zettel zum Wiedererkennen (Nutzer 09.11.: nur noch einer), dann der Grund. */
 .ten-know { max-width: 640px; margin: 18px 0 40px; background: var(--note-c); color: var(--note-c-fg); box-shadow: var(--note-shadow); padding: 22px 24px; font: 400 1.42rem/1.32 var(--hand); transform: rotate(-.6deg); }
-/* Antwort auf den Zettel (Nutzer 09.11.): erst alles auf ein Brett, dann die Zehn. */
-.ten-know:has(+ .ten-answer) { margin-bottom: 22px; }
-.ten-answer { max-width: 640px; margin: 0 0 40px; font: 600 clamp(1.25rem, 3vw, 1.5rem)/1.3 var(--display); color: var(--fg); }
+/* Entwurf E (Andreas 10.11.): Kernsatz oben, darunter Zettel und Antwort nebeneinander – wenige Formate. */
+.duo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; align-items: center; margin-bottom: 44px; }
+.duo .ten-know { margin: 14px 0 0; }
+.duo-answer { font-size: 1.25rem; line-height: 1.5; text-wrap: pretty; }
+@media (max-width: 760px) { .duo { grid-template-columns: minmax(0, 1fr); gap: 26px; } }
 .ten-why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .ten-why > div { background: var(--surface); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
 .ten-why p { color: var(--muted); margin-top: 6px; }
@@ -340,6 +321,8 @@ footer a { color: var(--muted); }
   .promise, .plans { grid-template-columns: minmax(0, 1fr); }
   .shots { max-width: 340px; margin-inline: auto; }
   .shots figure { width: 100%; }
+  /* Kleine Handys (iPhone 13 mini, Andreas 10.11.): ganzes Handy-Bild auf einem Bildschirm, nicht höher als sichtbar. */
+  @supports (height: 1svh) { .shots img { width: min(100%, calc((100svh - 110px) * 720 / 1560)); justify-self: center; } }
   .styles figure { width: calc((100% - 22px) / 2 - 1px); }
   .tab { padding: 8px; border-radius: 18px; }
   .hero .note { padding: 26px 20px 22px; }
