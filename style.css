@@ -213,11 +213,12 @@ section + section { border-top: 1px solid var(--line); }
   .pin-in.seen { opacity: 1; translate: 0 0; }
 }
 
-.tab { margin: 0; padding: 14px; border-radius: 28px; background: #1b1a22; box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .5), 0 0 0 2px #3a3846 inset; }
-.tab img { border-radius: 16px; width: 100%; }
+/* Tablet ohne Geräte-Rahmen, wie die Handy-Bilder (Andreas 12.11.: „beim Tablet bitte den Rahmen entfernen, so wie bei den
+   handy-Bildern“). */
+.tab { margin: 0; display: grid; gap: 14px; align-content: start; }
+.tab img { border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--line); width: 100%; height: auto; }
 /* Tablet (Nutzer 04.11.): Brett und Zeitleiste + Listen nebeneinander, am Handy untereinander. */
 .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
-.tabs .tab figcaption { color: #f4f1ea; font-weight: 700; text-align: center; padding-top: 10px; }
 
 .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 900px; }
 .plan { background: var(--surface); border-radius: 18px; padding: 24px 24px 22px; box-shadow: var(--shadow); display: grid; gap: 12px; align-content: start; }
@@ -324,7 +325,7 @@ footer a { color: var(--muted); }
   /* Kleine Handys (iPhone 13 mini, Andreas 10.11.): ganzes Handy-Bild auf einem Bildschirm, nicht höher als sichtbar. */
   @supports (height: 1svh) { .shots img { width: min(100%, calc((100svh - 110px) * 720 / 1560)); justify-self: center; } }
   .styles figure { width: calc((100% - 22px) / 2 - 1px); }
-  .tab { padding: 8px; border-radius: 18px; }
+  .tab img { border-radius: 14px; }
   .hero .note { padding: 26px 20px 22px; }
 }
 @media (prefers-reduced-motion: no-preference) {
