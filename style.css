@@ -219,6 +219,8 @@ section + section { border-top: 1px solid var(--line); }
 .tab img { border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--line); width: 100%; height: auto; }
 /* Tablet (Nutzer 04.11.): Brett und Zeitleiste + Listen nebeneinander, am Handy untereinander. */
 .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+/* Fortschritt breit unter Brett und Zeitleiste (Andreas 12.11.), damit kein Bild allein steht und alles lesbar bleibt */
+.tab.wide { grid-column: 1 / -1; }
 
 .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 900px; }
 .plan { background: var(--surface); border-radius: 18px; padding: 24px 24px 22px; box-shadow: var(--shadow); display: grid; gap: 12px; align-content: start; }
