@@ -1,0 +1,12 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "de.expansionssupport.just_ten",
+    "sha256_cert_fingerprints": [
+      "6C:82:9D:34:83:8F:F8:55:C7:D2:9B:09:50:78:57:BD:36:CD:C1:5C:27:B6:F2:19:5D:37:33:B1:8D:12:57:54",
+      "64:18:AF:20:19:87:90:B3:B3:7C:DE:96:A8:BF:FD:1B:F1:98:4B:FB:8A:56:D0:55:8E:ED:82:99:F6:1A:22:C9",
+      "95:4C:6C:08:0A:88:85:6D:7C:9F:DB:08:38:AC:53:28:C6:13:F1:50:51:D6:DB:85:B6:60:A1:E2:28:65:63:DB"
+    ]
+  }
+}]

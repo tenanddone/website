@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["MHQG677YD5.de.expansionssupport.justTen"],
+        "components": [{ "/": "/l/*", "comment": "Geteilte Einkaufsliste" }]
+      }
+    ]
+  }
+}
