@@ -27,6 +27,13 @@
   .take p { margin: 0; color: var(--muted); }
   .quiet { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
   .gone { max-width: 520px; margin-inline: auto; }
+  .stuck { width: 100%; box-sizing: border-box; padding: 16px 18px; border-radius: 14px; border: 1px solid #ddd6c4;
+    display: grid; gap: 10px; justify-items: start; }
+  .stuck.alarm { background: #fff6d6; border: 2px solid #f0c94a; }
+  .stuck h2 { margin: 0; font-size: 1.1rem; }
+  .stuck.alarm h2 { font-size: 1.2rem; }
+  .stuck p { margin: 0; }
+  .take .stuck .btn { font-size: 1rem; padding: 12px 18px; }
 </style>
 </head>
 <body>
@@ -48,6 +55,19 @@
   <div class="take" id="take">
     <a class="btn" id="open" href="#">📲 In Ten &amp; Done übernehmen</a>
     <p id="desk" hidden>Öffne diesen Link auf dem Handy, auf dem Ten &amp; Done ist.</p>
+    <!-- Zweiter Weg, immer am Handy (18.11.: Tochter am iPhone mit Build 1265 – die App öffnete sich, kannte
+         „tenanddone://l/…“ aber nicht und zeigte keine Liste; Android 1.0.0+5 ging in den Play Store). Die Seite kann
+         nicht sehen, ob die App den Link verstanden hat. „Teilen“ nimmt jede Fassung an (Android seit 12.10., iPhone
+         seit 12.11.), „Liste kopieren“ und ins Einkaufs-Feld einfügen jede seit 14.10. Öffnet sich die App gar nicht
+         (Android: Chrome kommt mit „?alt“ zurück, iPhone: Seite bleibt sichtbar), wird der Kasten gelb. -->
+    <div class="stuck" id="stuck" hidden>
+      <h2 id="stuckT">Liste nicht angekommen?</h2>
+      <p id="stuckWhy">Ältere Versionen von Ten &amp; Done kennen den Knopf oben noch nicht. So klappt es mit jeder Version:</p>
+      <button class="btn" id="send" type="button">📤 Liste an Ten &amp; Done senden</button>
+      <p id="sendHow">Im Teilen-Fenster „Ten &amp; Done“ wählen – die Liste kommt dann in deinen Einkauf.</p>
+      <p id="pasteHow">Oder unten „Liste kopieren“ und in Ten &amp; Done beim Einkauf ins Feld „Was fehlt …?“ einfügen.</p>
+      <a class="quiet" id="update" href="https://play.google.com/store/apps/details?id=de.expansionssupport.just_ten">Ten &amp; Done im Play Store aktualisieren</a>
+    </div>
     <p id="none">Noch kein Ten &amp; Done? <a href="../index.html">Hier gibt es die App.</a></p>
     <button class="quiet" id="copy" type="button">Liste kopieren</button>
     <p id="privacy">Die Liste steht nur in diesem Link. Sie geht nicht über unseren Server.</p>
@@ -62,7 +82,13 @@
     desk: 'Open this link on the phone that has Ten & Done.', none: 'No Ten & Done yet? ',
     get: 'Get the app here.', copy: 'Copy list', copied: '✓ Copied',
     privacy: 'The list is only inside this link. It doesn’t go through our server.',
-    bad: 'This link is incomplete. Please ask for the list to be sent again.'
+    bad: 'This link is incomplete. Please ask for the list to be sent again.',
+    stuckT: 'List didn’t arrive?', stuckWhy: 'Older versions of Ten & Done don’t know the button above yet. This works with every version:',
+    stuckT2: 'Ten & Done didn’t open',
+    stuckWhy2: 'Your Ten & Done is probably an older version that doesn’t know this button yet. This way the list still gets there:',
+    send: '📤 Send list to Ten & Done', sendHow: 'Pick “Ten & Done” in the share window – the list goes into your shopping.',
+    pasteHow: 'Or tap “Copy list” below and paste it in Ten & Done into the “What do you need from …?” field.',
+    update: 'Update Ten & Done in the Play Store'
   } : null;
   const $ = (id) => document.getElementById(id);
   if (T) {
@@ -71,7 +97,10 @@
     $('open').textContent = T.open; $('desk').textContent = T.desk; $('copy').textContent = T.copy;
     $('privacy').textContent = T.privacy; $('bad').textContent = T.bad;
     $('none').firstChild.textContent = T.none; $('none').querySelector('a').textContent = T.get;
+    for (const k of ['stuckT', 'stuckWhy', 'send', 'sendHow', 'pasteHow', 'update']) $(k).textContent = T[k];
   }
+  // „?alt“: Chrome kam zurück, weil keine App den Knopf annahm (S.browser_fallback_url, siehe unten).
+  const back = /[?&]alt\b/.test(location.search);
   const code = (location.hash || '').slice(1).replace(/[^A-Za-z0-9_-]/g, '');
   let text = '';
   try {
@@ -112,14 +141,41 @@
   const ua = navigator.userAgent || '';
   const android = /Android/i.test(ua);
   const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  // Zweiter Weg am Handy immer sichtbar (Kasten „Liste nicht angekommen?“). Öffnet sich Ten & Done gar nicht (App fehlt
+  // oder zu alt), wird er gelb: Android – Chrome lädt statt des Play Stores diese Seite mit „?alt“
+  // (S.browser_fallback_url); iPhone – Safari meldet nur „Adresse ungültig“, die Seite war nie verdeckt.
+  if (android || ios) {
+    $('stuck').hidden = false;
+    if (!navigator.share) $('send').hidden = $('sendHow').hidden = true;
+    if (!android) $('update').hidden = true;
+  }
+  const alarm = () => {
+    $('stuck').classList.add('alarm');
+    $('stuckT').textContent = T ? T.stuckT2 : 'Ten & Done hat sich nicht geöffnet';
+    $('stuckWhy').textContent = T ? T.stuckWhy2 :
+      'Wahrscheinlich ist deine Ten & Done noch eine ältere Version, die diesen Knopf nicht kennt. So kommt die Liste trotzdem an:';
+    $('stuck').scrollIntoView({ block: 'center' });
+  };
   if (android) {
-    // Chrome öffnet die App, fehlt sie, den Play Store.
-    $('open').href = 'intent://l/' + code + '#Intent;scheme=tenanddone;package=de.expansionssupport.just_ten;end';
+    const fallback = location.origin + location.pathname + '?alt#' + code;
+    $('open').href = 'intent://l/' + code + '#Intent;scheme=tenanddone;package=de.expansionssupport.just_ten;' +
+      'S.browser_fallback_url=' + encodeURIComponent(fallback) + ';end';
+    if (back) alarm();
   } else if (ios) {
     $('open').href = 'tenanddone://l/' + code;
+    // Ging die App auf, war die Seite verdeckt (Zeitgeber laufen im Hintergrund nicht, darum merken).
+    let left = false;
+    document.addEventListener('visibilitychange', () => { if (document.hidden) left = true; });
+    $('open').addEventListener('click', () => {
+      left = false;
+      setTimeout(() => { if (!left && !document.hidden) alarm(); }, 3000);
+    });
   } else {
     $('open').hidden = true; $('desk').hidden = false;
   }
+  $('send').addEventListener('click', async () => {
+    try { await navigator.share({ text: lines.join('\n') }); } catch (_) { /* abgebrochen */ }
+  });
   $('copy').addEventListener('click', async () => {
     const plain = lines.join('\n');
     try { await navigator.clipboard.writeText(plain); $('copy').textContent = T ? T.copied : '✓ Kopiert'; }
