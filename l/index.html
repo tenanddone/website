@@ -79,14 +79,6 @@
     const bin = atob(b + '='.repeat((4 - b.length % 4) % 4));
     text = new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))).trim();
   } catch (_) { text = ''; }
-  // Kurzform (seit 17.11. abends): „Laden⏎Artikel⇥Menge⏎…“ ohne 🛒, „• “, „ · “.
-  if (text && !text.includes('🛒')) {
-    const ls = text.split('\n').map((s) => s.trim()).filter(Boolean);
-    text = ls.length < 2 ? '' : ['🛒 ' + ls[0], ...ls.slice(1).map((s) => {
-      const t = s.indexOf('\t');
-      return t > 0 ? '• ' + s.slice(0, t).trim() + ' · ' + s.slice(t + 1).trim() : '• ' + s;
-    })].join('\n');
-  }
   if (!code || !text.includes('🛒')) {
     $('note').hidden = true; $('bad').hidden = false; $('take').hidden = true;
     return;
